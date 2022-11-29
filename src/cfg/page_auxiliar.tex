@@ -1,15 +1,13 @@
-% Template:     Template Auxiliares LaTeX
+% Template:     Auxiliares LaTeX
 % Documento:    Configuración de página
 % Versión:      DEV
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
-%        Facultad de Ciencias Físicas y Matemáticas
-%        Universidad de Chile
 %        pablo@ppizarror.com
 %
-% Sitio web:    [https://latex.ppizarror.com/auxiliares]
-% Licencia MIT: [https://opensource.org/licenses/MIT]
+% Manual template: [https://latex.ppizarror.com/auxiliares]
+% Licencia MIT:    [https://opensource.org/licenses/MIT]
 
 % COMPILACION
 % - Reemplaza cada bloque en lib/cfg/page.tex
@@ -35,11 +33,7 @@
 		\def\sectionobjectnumcode {\thesubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptioncode}{ssssec}}{
-		\ifthenelse{\equal{\showdotaftersnum}{true}}{
-			\def\sectionobjectnumcode {\thesubsubsubsection}
-		}{
-			\def\sectionobjectnumcode {\thesubsubsubsection\sectioncaptiondelimiter}
-		}
+		\def\sectionobjectnumcode {\thesubsubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptioncode}{chap}}{
 		\def\sectionobjectnumcode {\thechapter\sectioncaptiondelimiter}
@@ -59,11 +53,7 @@
 		\def\sectionobjectnumeqn {\thesubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptioneqn}{ssssec}}{
-		\ifthenelse{\equal{\showdotaftersnum}{true}}{
-			\def\sectionobjectnumeqn {\thesubsubsubsection}
-		}{
-			\def\sectionobjectnumeqn {\thesubsubsubsection\sectioncaptiondelimiter}
-		}
+		\def\sectionobjectnumeqn {\thesubsubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptioneqn}{chap}}{
 		\def\sectionobjectnumeqn {\thechapter\sectioncaptiondelimiter}
@@ -83,11 +73,7 @@
 		\def\sectionobjectnumfig {\thesubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptionfig}{ssssec}}{
-		\ifthenelse{\equal{\showdotaftersnum}{true}}{
-			\def\sectionobjectnumfig {\thesubsubsubsection}
-		}{
-			\def\sectionobjectnumfig {\thesubsubsubsection\sectioncaptiondelimiter}
-		}
+		\def\sectionobjectnumfig {\thesubsubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptionfig}{chap}}{
 		\def\sectionobjectnumfig {\thechapter\sectioncaptiondelimiter}
@@ -107,11 +93,7 @@
 		\def\sectionobjectnumtab {\thesubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptiontab}{ssssec}}{
-		\ifthenelse{\equal{\showdotaftersnum}{true}}{
-			\def\sectionobjectnumtab {\thesubsubsubsection}
-		}{
-			\def\sectionobjectnumtab {\thesubsubsubsection\sectioncaptiondelimiter}
-		}
+		\def\sectionobjectnumtab {\thesubsubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptiontab}{chap}}{
 		\def\sectionobjectnumtab {\thechapter\sectioncaptiondelimiter}
@@ -225,8 +207,7 @@
 	% Márgenes de páginas y tablas
 	% -----------------------------------------------------------------------------
 	\setpagemargincm{\pagemarginleft}{\pagemargintop}{\pagemarginright}{\pagemarginbottom}
-	\def\arraystretch {\tablepaddingv} % Se ajusta el padding vertical de las tablas
-	\setlength{\tabcolsep}{\tablepaddingh em} % Se ajusta el padding horizontal de las tablas
+	\resettablecellpadding
 
 % -----------------------------------------------------------------------------
 	% Se crean los header-footer
@@ -239,7 +220,7 @@
 			\fancyhead[L]{}
 			\fancyhead[R]{}
 			\renewcommand{\headrulewidth}{0pt} % Ancho de la barra del header
-			\fancyfoot[L]{\small \rm \textit{\tituloauxiliar}} % Footer izq, título del informe
+			\fancyfoot[L]{\small \rm \textit{\documenttitle}} % Footer izq, título del informe
 			\fancyfoot[R]{\small \rm \nouppercase{\thepage}} % Footer der, curso
 			\renewcommand{\footrulewidth}{0.5pt} % Ancho de la barra del footer
 		}
@@ -249,7 +230,7 @@
 			\fancyhf{}
 			\renewcommand{\headrulewidth}{0pt}
 			%\setpagemargincm{\pagemarginleft}{\pagemargintop}{\pagemarginright}{\pagemarginbottom}
-			\fancyfoot[L]{\small \rm \textit{\tituloauxiliar}} % Footer izq, título
+			\fancyfoot[L]{\small \rm \textit{\documenttitle}} % Footer izq, título
 			\fancyfoot[R]{\small \rm \nouppercase{\thepage}} % Footer der, curso
 			\renewcommand{\footrulewidth}{0.5pt} % Ancho de la barra del footer
 		}
@@ -262,12 +243,12 @@
 				\hspace{-0.45cm}~
 				\begin{minipage}[t]{1\linewidth}
 					\vspace{-4.65em}
-					\nombreuniversidad ~ \\
-					\nombrefacultad ~ \\
-					\departamentouniversidad ~ \\
-					\codigodelcurso\ \hfpdashcharstyle\ \nombredelcurso ~ \\
+					\universityname ~ \\
+					\universityfaculty ~ \\
+					\universitydepartment ~ \\
+					\coursecode\ \hfpdashcharstyle\ \coursename ~ \\
 					\begin{flushright}%
-						\vspace{-6.7em}\nobreak~\coreinsertkeyimage{\imagendepartamentoparams}{\imagendepartamento} \vspace{0cm} ~
+						\vspace{-6.7em}\nobreak~\coreinsertkeyimage{\universitydepartmentimagecfg}{\universitydepartmentimage} \vspace{0cm} ~
 					\end{flushright}
 				\end{minipage}
 				\\
@@ -279,16 +260,19 @@
 		\noindent \rule{1\linewidth}{0.5pt}
 		\begin{center} % Tabla de datos
 			\vspace*{0.35cm}
-			\huge {\tituloauxiliar} ~ \\
-			\ifthenelse{\equal{\temaatratar}{\xspace}}{}{
+			\huge {\documenttitle} ~ \\
+			\ifthenelse{\equal{\documentsubject}{\xspace}}{}{
 				\vspace{0.2cm}
-				\large {\temaatratar} ~ \\
+				\normalsize {\documentsubject} ~ \\
 			}
-			\ifdefempty{\equipodocente}{\vspace{0.4cm}}{
-				\vspace{0.7cm}
-				\begin{normalsize}
-					\equipodocente
-				\end{normalsize}
+			\ifdefempty{\teachingstaff}{\vspace{0.4cm}}{
+				\vspace{0.5cm}
+				\begin{spacing}{0.95}
+					\begin{normalsize}
+						\teachingstaff
+					\end{normalsize}
+				\end{spacing}
+				\vspace{0.4cm}
 			}
 		\end{center}
 	}{
@@ -324,7 +308,7 @@
 				\hspace{-0.60cm}
 				\begin{minipage}[t]{1.0\linewidth}
 					\begin{flushleft}
-						\vspace{-5.1em}\nobreak~\coreinsertkeyimage{\imagendepartamentoparams}{\imagendepartamento} \vspace{0cm}
+						\vspace{-5.1em}\nobreak~\coreinsertkeyimage{\universitydepartmentimagecfg}{\universitydepartmentimage} \vspace{0cm}
 					\end{flushleft}
 				\end{minipage}
 				\\
@@ -335,18 +319,21 @@
 		\vspace*{-1.25cm}
 		\begin{center} % Tabla de datos
 			\vspace*{0.35cm}
-			\LARGE {\textbf{\tituloauxiliar}} ~ \\
+			\LARGE {\textbf{\documenttitle}} ~ \\
 			\vspace{0.3cm}
-			\Large {\codigodelcurso \nombredelcurso} ~ \\
-			\ifthenelse{\equal{\temaatratar}{\xspace}}{}{
-				\vspace{0.2cm}
-				\large {\temaatratar} ~ \\
+			\large {\coursecode \coursename} ~ \\
+			\ifthenelse{\equal{\documentsubject}{\xspace}}{}{
+				\vspace{0.1cm}
+				\normalsize {\documentsubject} ~ \\
 			}
-			\ifdefempty{\equipodocente}{\vspace{0.4cm}}{
+			\ifdefempty{\teachingstaff}{\vspace{0.4cm}}{
 				\vspace{0.5cm}
-				\begin{normalsize}
-					\equipodocente
-				\end{normalsize}
+				\begin{spacing}{0.95}
+					\begin{normalsize}
+						\teachingstaff
+					\end{normalsize}
+				\end{spacing}
+				\vspace{0.4cm}
 			}
 		\end{center}
 	}{
@@ -382,7 +369,7 @@
 				\hspace{-0.33cm}
 				\begin{minipage}[t]{1.0\linewidth}
 					\begin{flushright}
-						\vspace{-5.1em}\nobreak~\coreinsertkeyimage{\imagendepartamentoparams}{\imagendepartamento} \vspace{0cm}
+						\vspace{-5.1em}\nobreak~\coreinsertkeyimage{\universitydepartmentimagecfg}{\universitydepartmentimage} \vspace{0cm}
 					\end{flushright}
 				\end{minipage}
 				\\
@@ -393,18 +380,21 @@
 		\vspace*{-1.25cm}
 		\begin{center} % Tabla de datos
 			\vspace*{0.35cm}
-			\LARGE {\textbf{\tituloauxiliar}} ~ \\
+			\LARGE {\textbf{\documenttitle}} ~ \\
 			\vspace{0.3cm}
-			\Large {\codigodelcurso \nombredelcurso} ~ \\
-			\ifthenelse{\equal{\temaatratar}{\xspace}}{}{
-				\vspace{0.2cm}
-				\large {\temaatratar} ~ \\
+			\large {\coursecode \coursename} ~ \\
+			\ifthenelse{\equal{\documentsubject}{\xspace}}{}{
+				\vspace{0.1cm}
+				\normalsize {\documentsubject} ~ \\
 			}
-			\ifdefempty{\equipodocente}{\vspace{0.4cm}}{
+			\ifdefempty{\teachingstaff}{\vspace{0.4cm}}{
 				\vspace{0.5cm}
-				\begin{normalsize}
-					\equipodocente
-				\end{normalsize}
+				\begin{spacing}{0.95}
+					\begin{normalsize}
+						\teachingstaff
+					\end{normalsize}
+				\end{spacing}
+				\vspace{0.4cm}
 			}
 		\end{center}
 	}{
@@ -415,7 +405,7 @@
 			\fancyhead[L]{}
 			\fancyhead[R]{}
 			\renewcommand{\headrulewidth}{0pt} % Ancho de la barra del header
-			\fancyfoot[L]{\small \rm \textit{\tituloauxiliar}} % Footer izq, título del informe
+			\fancyfoot[L]{\small \rm \textit{\documenttitle}} % Footer izq, título del informe
 			\fancyfoot[R]{\small \rm \nouppercase{\thepage}} % Footer der, curso
 			\renewcommand{\footrulewidth}{0.5pt} % Ancho de la barra del footer
 		}
@@ -425,7 +415,7 @@
 			\fancyhf{}
 			\renewcommand{\headrulewidth}{0pt}
 			%\setpagemargincm{\pagemarginleft}{\pagemargintop}{\pagemarginright}{\pagemarginbottom}
-			\fancyfoot[L]{\small \rm \textit{\tituloauxiliar}} % Footer izq, título
+			\fancyfoot[L]{\small \rm \textit{\documenttitle}} % Footer izq, título
 			\fancyfoot[R]{\small \rm \nouppercase{\thepage}} % Footer der, curso
 			\renewcommand{\footrulewidth}{0.5pt} % Ancho de la barra del footer
 		}
@@ -438,12 +428,12 @@
 				\hspace{-0.45cm}~
 				\begin{minipage}[t]{1\linewidth}
 					\vspace{-4.65em}
-					\nombreuniversidad ~ \\
-					\nombrefacultad ~ \\
-					\departamentouniversidad ~ \\
-					\codigodelcurso\ \hfpdashcharstyle\ \nombredelcurso ~ \\
+					\universityname ~ \\
+					\universityfaculty ~ \\
+					\universitydepartment ~ \\
+					\coursecode\ \hfpdashcharstyle\ \coursename ~ \\
 					\begin{flushright}%
-						\vspace{-6.7em}\nobreak~\coreinsertkeyimage{\imagendepartamentoparams}{\imagendepartamento} \vspace{0cm} ~
+						\vspace{-6.7em}\nobreak~\coreinsertkeyimage{\universitydepartmentimagecfg}{\universitydepartmentimage} \vspace{0cm} ~
 					\end{flushright}
 				\end{minipage}
 				\\
@@ -456,14 +446,34 @@
 	}{
 		\throwbadconfigondoc{Estilo de template incorrecto}{\templatestyle}{style1,style2,style3,style4}}}}
 	}
+	% Aplica el estilo de página
 	\fancypagestyle{plain}{
 		\fancyheadoffset{0pt}
 		\COREstyledefinition
 	}
+	% Define estilos por defecto en flotantes
+	\floatpagestyle{plain}
+	\rotfloatpagestyle{plain}
 
-% -----------------------------------------------------------------------------
-% Establece el estilo de las subsubsubsecciones
-% -----------------------------------------------------------------------------
-\titleclass{\subsubsubsection}{straight}[\subsection]
+	% -----------------------------------------------------------------------------
+	% Establece el estilo de las sub-sub-sub-secciones
+	% -----------------------------------------------------------------------------
+	\titleclass{\subsubsubsection}{straight}[\subsection]
+
+	% -------------------------------------------------------------------------
+	% Reestablece \cleardoublepage
+	% -------------------------------------------------------------------------
+	% \let\cleardoublepage\oldcleardoublepage
+	\let\cleardoublepage\corecleardoublepage
+
+	% -------------------------------------------------------------------------
+	% Reestablece los valores del estado de los títulos
+	% -------------------------------------------------------------------------
+	\global\def\GLOBALtitlerequirechapter {false}
+	\global\def\GLOBALtitleinitchapter {false}
+	\global\def\GLOBALtitleinitsection {false}
+	\global\def\GLOBALtitleinitsubsection {false}
+	\global\def\GLOBALtitleinitsubsubsection {false}
+	\global\def\GLOBALtitleinitsubsubsubsection {false}
 
 % END

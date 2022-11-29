@@ -4,20 +4,18 @@
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
-%        Facultad de Ciencias Físicas y Matemáticas
-%        Universidad de Chile
 %        pablo@ppizarror.com
 %
 % Manual template: [https://latex.ppizarror.com/informe]
 % Licencia MIT:    [https://opensource.org/licenses/MIT]
 
 \newcommand{\templatePagecfg}{
-
+	
 	% -------------------------------------------------------------------------
 	% Numeración de páginas
 	% -------------------------------------------------------------------------
 	\clearpage
-	\ifthenelse{\equal{\predocpageromannumber}{true}}{ % Si se usan números romanos en el predocumento
+	\ifthenelse{\equal{\predocpageromannumber}{true}}{ % Si se usan números romanos en el pre-documento
 		\ifthenelse{\equal{\predocpageromanupper}{true}}{
 			\pagenumbering{Roman}
 		}{
@@ -27,54 +25,65 @@
 	}
 	\setcounter{page}{1}
 	\setcounter{footnote}{0}
-
+	
 	% -------------------------------------------------------------------------
 	% Márgenes de páginas y tablas
 	% -------------------------------------------------------------------------
 	\setpagemargincm{\pagemarginleft}{\pagemargintop}{\pagemarginright}{\pagemarginbottom}
-	\def\arraystretch {\tablepaddingv} % Se ajusta el padding vertical de las tablas
-	\setlength{\tabcolsep}{\tablepaddingh em} % Se ajusta el padding horizontal de las tablas
-
+	\resettablecellpadding
+	
 	% -------------------------------------------------------------------------
 	% Se define el punto decimal
 	% -------------------------------------------------------------------------
 	\ifthenelse{\equal{\pointdecimal}{true}}{
 		\decimalpoint}{
 	}
-
+	
 	% -------------------------------------------------------------------------
 	% Definición de nombres de objetos
 	% -------------------------------------------------------------------------
-	\renewcommand{\appendixname}{\nomltappendixsection} % Nombre del anexo (título)
+	\renewcommand{\abstractname}{\nameabstract} % Nombre del abstract
+	\renewcommand{\appendixname}{\nameltappendixsection} % Nombre del anexo (título)
 	\renewcommand{\appendixpagename}{\nameappendixsection} % Nombre del anexo en índice
 	\renewcommand{\appendixtocname}{\nameappendixsection} % Nombre del anexo en índice
-	\renewcommand{\contentsname}{\nomltcont} % Nombre del índice
-	\renewcommand{\figurename}{\nomltwfigure} % Nombre de la leyenda de las fig.
-	\renewcommand{\listfigurename}{\nomltfigure} % Nombre del índice de figuras
-	\renewcommand{\listtablename}{\nomlttable} % Nombre del índice de tablas
-	\renewcommand{\lstlistingname}{\nomltwsrc} % Nombre leyenda del código fuente
-	\renewcommand{\lstlistlistingname}{\nomltsrc} % Nombre índice código fuente
+	\renewcommand{\contentsname}{\nameltcont} % Nombre del índice
+	\renewcommand{\figurename}{\nameltwfigure} % Nombre de la leyenda de las fig.
+	\renewcommand{\listfigurename}{\nameltfigure} % Nombre del índice de figuras
+	\renewcommand{\listtablename}{\namelttable} % Nombre del índice de tablas
+	\renewcommand{\lstlistingname}{\nameltwsrc} % Nombre leyenda del código fuente
+	\renewcommand{\lstlistlistingname}{\nameltsrc} % Nombre índice código fuente
 	\renewcommand{\refname}{\namereferences} % Nombre de las referencias (bibtex)
 	\renewcommand{\bibname}{\namereferences} % Nombre de las referencias (natbib)
-	\renewcommand{\tablename}{\nomltwtable} % Nombre de la leyenda de tablas
-
+	\renewcommand{\tablename}{\nameltwtable} % Nombre de la leyenda de tablas
+	
 	% -------------------------------------------------------------------------
 	% Estilo de títulos
 	% -------------------------------------------------------------------------
-	\sectionfont{\color{\titlecolor} \fontsizetitle \styletitle \selectfont}
-	\subsectionfont{\color{\subtitlecolor} \fontsizesubtitle \stylesubtitle \selectfont}
-	\subsubsectionfont{\color{\subsubtitlecolor} \fontsizesubsubtitle \stylesubsubtitle \selectfont}
-	\titleformat{\subsubsubsection}{\color{\ssstitlecolor} \normalfont \fontsizessstitle \stylessstitle}{\thesubsubsubsection}{1em}{}
-	\titlespacing*{\subsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-	\def\bibfont{\fontsizerefbibl} % Tamaño de fuente de las referencias
+	\sectionfont{%
+		\color{\sectioncolor} \sectionfontsize \sectionfontstyle \selectfont%
+	}
+	\subsectionfont{%
+		\color{\ssectioncolor} \ssectionfontsize \ssectionfontstyle \selectfont%
+	}
+	\subsubsectionfont{%
+		\color{\sssectioncolor} \sssectionfontsize \sssectionfontstyle \selectfont%
+	}
+	\titleformat{\subsubsubsection}{%
+		\color{\ssssectioncolor} \ssssectionfontsz \ssssectionfontstyle%
+	}{%
+		\GLOBALtitlepresubsubsubsectionstr\thesubsubsubsection\charaftersectionnum\spacingaftersection%
+		\corepatchaftersubsubsubsection%
+	}{0em}{%
+	}
+	\def\bibfont {\fontsizerefbibl} % Tamaño de fuente de las referencias
 	
 	% -------------------------------------------------------------------------
 	% Estilo citas
 	% -------------------------------------------------------------------------
-	\ifthenelse{\equal{\stylecitereferences}{apacite}}{
-		\renewcommand{\BOthers}[1]{\apacitebothers\hbox{}}
+	\ifthenelse{\equal{\stylecitereferences}{apacite}}{%
+		\renewcommand{\BOthers}[1]{\apacitebothers\hbox{}}%
 	}{}
-
+	
 	% -------------------------------------------------------------------------
 	% Se crean los header-footer
 	% -------------------------------------------------------------------------
@@ -92,20 +101,20 @@
 				\fancyfoot[L]{
 					\begin{minipage}[t]{\hfwidthtitle\linewidth}
 						\begin{flushleft}
-							\small \textit{\titulodelinforme}
+							\small \textit{\documenttitlehf}
 						\end{flushleft}
 					\end{minipage}
 				}
 				\fancyfoot[R]{
 					\begin{minipage}[t]{\hfwidthcourse\linewidth}
 						\begin{flushright}
-							\small \textit{\codigodelcurso \nombredelcurso}
+							\small \textit{\coursecode \coursename}
 						\end{flushright}
 					\end{minipage}
 				}
 			}{
-				\fancyfoot[L]{\small \textit{\titulodelinforme}}
-				\fancyfoot[R]{\small \textit{\codigodelcurso \nombredelcurso}}
+				\fancyfoot[L]{\small \textit{\documenttitlehf}}
+				\fancyfoot[R]{\small \textit{\coursecode \coursename}}
 			}
 			\renewcommand{\headrulewidth}{0.5pt}
 			\renewcommand{\footrulewidth}{0.5pt}
@@ -125,20 +134,20 @@
 				\fancyfoot[L]{
 					\begin{minipage}[t]{\hfwidthtitle\linewidth}
 						\begin{flushleft}
-							\small \textit{\titulodelinforme}
+							\small \textit{\documenttitlehf}
 						\end{flushleft}
 					\end{minipage}
 				}
 				\fancyfoot[R]{
 					\begin{minipage}[t]{\hfwidthcourse\linewidth}
 						\begin{flushright}
-							\small \textit{\codigodelcurso \nombredelcurso}
+							\small \textit{\coursecode \coursename}
 						\end{flushright}
 					\end{minipage}
 				}
 			}{
-				\fancyfoot[L]{\small \textit{\titulodelinforme}}
-				\fancyfoot[R]{\small \textit{\codigodelcurso \nombredelcurso}}
+				\fancyfoot[L]{\small \textit{\documenttitlehf}}
+				\fancyfoot[R]{\small \textit{\coursecode \coursename}}
 			}
 			\renewcommand{\headrulewidth}{0.5pt}
 			\renewcommand{\footrulewidth}{0.5pt}
@@ -158,20 +167,20 @@
 				\fancyfoot[L]{
 					\begin{minipage}[t]{\hfwidthtitle\linewidth}
 						\begin{flushleft}
-							\small \textit{\titulodelinforme}
+							\small \textit{\documenttitlehf}
 						\end{flushleft}
 					\end{minipage}
 				}
 				\fancyfoot[R]{
 					\begin{minipage}[t]{\hfwidthcourse\linewidth}
 						\begin{flushright}
-							\small \textit{\codigodelcurso \nombredelcurso}
+							\small \textit{\coursecode \coursename}
 						\end{flushright}
 					\end{minipage}
 				}
 			}{
-				\fancyfoot[L]{\small \textit{\titulodelinforme}}
-				\fancyfoot[R]{\small \textit{\codigodelcurso \nombredelcurso}}
+				\fancyfoot[L]{\small \textit{\documenttitlehf}}
+				\fancyfoot[R]{\small \textit{\coursecode \coursename}}
 			}
 			\renewcommand{\headrulewidth}{0.5pt}
 			\renewcommand{\footrulewidth}{0.5pt}
@@ -191,20 +200,20 @@
 				\fancyfoot[L]{
 					\begin{minipage}[t]{\hfwidthtitle\linewidth}
 						\begin{flushleft}
-							\small \textit{\titulodelinforme}
+							\small \textit{\documenttitlehf}
 						\end{flushleft}
 					\end{minipage}
 				}
 				\fancyfoot[R]{
 					\begin{minipage}[t]{\hfwidthcourse\linewidth}
 						\begin{flushright}
-							\small \textit{\codigodelcurso \nombredelcurso}
+							\small \textit{\coursecode \coursename}
 						\end{flushright}
 					\end{minipage}
 				}
 			}{
-				\fancyfoot[L]{\small \textit{\titulodelinforme}}
-				\fancyfoot[R]{\small \textit{\codigodelcurso \nombredelcurso}}
+				\fancyfoot[L]{\small \textit{\documenttitlehf}}
+				\fancyfoot[R]{\small \textit{\coursecode \coursename}}
 			}
 			\renewcommand{\headrulewidth}{0.5pt}
 			\renewcommand{\footrulewidth}{0pt}
@@ -224,20 +233,20 @@
 				\fancyfoot[L]{
 					\begin{minipage}[t]{\hfwidthtitle\linewidth}
 						\begin{flushleft}
-							\small \textit{\titulodelinforme}
+							\small \textit{\documenttitlehf}
 						\end{flushleft}
 					\end{minipage}
 				}
 				\fancyfoot[R]{
 					\begin{minipage}[t]{\hfwidthcourse\linewidth}
 						\begin{flushright}
-							\small \textit{\codigodelcurso \nombredelcurso}
+							\small \textit{\coursecode \coursename}
 						\end{flushright}
 					\end{minipage}
 				}
 			}{
-				\fancyfoot[L]{\small \textit{\titulodelinforme}}
-				\fancyfoot[R]{\small \textit{\codigodelcurso \nombredelcurso}}
+				\fancyfoot[L]{\small \textit{\documenttitlehf}}
+				\fancyfoot[R]{\small \textit{\coursecode \coursename}}
 			}
 			\renewcommand{\headrulewidth}{0.5pt}
 			\renewcommand{\footrulewidth}{0pt}
@@ -257,20 +266,20 @@
 				\fancyfoot[L]{
 					\begin{minipage}[t]{\hfwidthtitle\linewidth}
 						\begin{flushleft}
-							\small \textit{\titulodelinforme}
+							\small \textit{\documenttitlehf}
 						\end{flushleft}
 					\end{minipage}
 				}
 				\fancyfoot[R]{
 					\begin{minipage}[t]{\hfwidthcourse\linewidth}
 						\begin{flushright}
-							\small \textit{\codigodelcurso \nombredelcurso}
+							\small \textit{\coursecode \coursename}
 						\end{flushright}
 					\end{minipage}
 				}
 			}{
-				\fancyfoot[L]{\small \textit{\titulodelinforme}}
-				\fancyfoot[R]{\small \textit{\codigodelcurso \nombredelcurso}}
+				\fancyfoot[L]{\small \textit{\documenttitlehf}}
+				\fancyfoot[R]{\small \textit{\coursecode \coursename}}
 			}
 			\renewcommand{\headrulewidth}{0.5pt}
 			\renewcommand{\footrulewidth}{0pt}
@@ -286,15 +295,15 @@
 				\fancyhead[L]{
 					\begin{minipage}[t]{\hfwidthtitle\linewidth}
 						\begin{flushleft}
-							\small \textit{\codigodelcurso \nombredelcurso}
+							\small \textit{\coursecode \coursename}
 						\end{flushleft}
 					\end{minipage}
 				}
 			}{
-				\fancyhead[L]{\small \textit{\codigodelcurso \nombredelcurso}}
+				\fancyhead[L]{\small \textit{\coursecode \coursename}}
 			}
 			\fancyhead[R]{%
-				\coreinsertkeyimage{\hfheaderimageparamsA}{\imagendepartamento}%
+				\coreinsertkeyimage{\hfheaderimageparamsA}{\universitydepartmentimage}%
 				\vspace{-0.15cm}%
 			}
 			\fancyfoot[C]{\thepage}
@@ -326,7 +335,7 @@
 				\fancyhead[L]{
 					\begin{minipage}[t]{\hfwidthcourse\linewidth}
 						\begin{flushleft}
-							\codigodelcurso \nombredelcurso
+							\coursecode \coursename
 						\end{flushleft}
 					\end{minipage}
 				}
@@ -340,12 +349,12 @@
 					}
 				}{}
 			}{
-				\fancyhead[L]{\codigodelcurso \nombredelcurso}
+				\fancyhead[L]{\coursecode \coursename}
 				\ifthenelse{\equal{\disablehfrightmark}{false}}{
 					\fancyhead[R]{\nouppercase{\rightmark}}
 				}{}
 			}
-			\fancyfoot[L]{\departamentouniversidad, \nombreuniversidad}
+			\fancyfoot[L]{\universitydepartment, \universityname}
 			\fancyfoot[R]{\small \thepage}
 			\renewcommand{\headrulewidth}{0pt}
 			\renewcommand{\footrulewidth}{0pt}
@@ -361,7 +370,7 @@
 				\fancyhead[L]{
 					\begin{minipage}[t]{\hfwidthcourse\linewidth}
 						\begin{flushleft}
-							\codigodelcurso \nombredelcurso
+							\coursecode \coursename
 						\end{flushleft}
 					\end{minipage}
 				}
@@ -375,12 +384,12 @@
 					}
 				}{}
 			}{
-				\fancyhead[L]{\codigodelcurso \nombredelcurso}
+				\fancyhead[L]{\coursecode \coursename}
 				\ifthenelse{\equal{\disablehfrightmark}{false}}{
 					\fancyhead[R]{\nouppercase{\rightmark}}
 				}{}
 			}
-			\fancyfoot[LO,RE]{\departamentouniversidad, \nombreuniversidad}
+			\fancyfoot[LO,RE]{\universitydepartment, \universityname}
 			\fancyfoot[RO,LE]{\small \thepage}
 			\renewcommand{\headrulewidth}{0pt}
 			\renewcommand{\footrulewidth}{0pt}
@@ -396,7 +405,7 @@
 				\fancyhead[L]{
 					\begin{minipage}[t]{\hfwidthcourse\linewidth}
 						\begin{flushleft}
-							\codigodelcurso \nombredelcurso
+							\coursecode \coursename
 						\end{flushleft}
 					\end{minipage}
 				}
@@ -410,12 +419,12 @@
 					}
 				}{}
 			}{
-				\fancyhead[L]{\codigodelcurso \nombredelcurso}
+				\fancyhead[L]{\coursecode \coursename}
 				\ifthenelse{\equal{\disablehfrightmark}{false}}{
 					\fancyhead[R]{\nouppercase{\rightmark}}
 				}{}
 			}
-			\fancyfoot[LE,RO]{\departamentouniversidad, \nombreuniversidad}
+			\fancyfoot[LE,RO]{\universitydepartment, \universityname}
 			\fancyfoot[RE,LO]{\small \thepage}
 			\renewcommand{\headrulewidth}{0pt}
 			\renewcommand{\footrulewidth}{0pt}
@@ -427,9 +436,9 @@
 		\pagestyle{fancy}
 		\newcommand{\COREstyledefinition}{
 			\fancyhf{}
-			\fancyfoot[L]{\departamentouniversidad}
+			\fancyfoot[L]{\universitydepartment}
 			\fancyfoot[C]{\thepage}
-			\fancyfoot[R]{\nombreuniversidad}
+			\fancyfoot[R]{\universityname}
 			\renewcommand{\headrulewidth}{0pt}
 			\renewcommand{\footrulewidth}{0pt}
 		}
@@ -488,7 +497,7 @@
 				\fancyhead[L]{\nouppercase{\rightmark}}
 			}{}
 			\fancyhead[R]{}
-			\fancyfoot[L]{\small \textit{\titulodelinforme}}
+			\fancyfoot[L]{\small \textit{\documenttitlehf}}
 			\fancyfoot[R]{\small \thepage}
 			\renewcommand{\headrulewidth}{0.5pt}
 			\renewcommand{\footrulewidth}{0.5pt}
@@ -504,7 +513,7 @@
 				\fancyhead[L]{\nouppercase{\rightmark}}
 			}{}
 			\fancyhead[R]{}
-			\fancyfoot[RE,LO]{\small \textit{\titulodelinforme}}
+			\fancyfoot[RE,LO]{\small \textit{\documenttitlehf}}
 			\fancyfoot[RO,LE]{\small \thepage}
 			\renewcommand{\headrulewidth}{0.5pt}
 			\renewcommand{\footrulewidth}{0.5pt}
@@ -520,7 +529,7 @@
 				\fancyhead[L]{\nouppercase{\rightmark}}
 			}{}
 			\fancyhead[R]{}
-			\fancyfoot[RO,LE]{\small \textit{\titulodelinforme}}
+			\fancyfoot[RO,LE]{\small \textit{\documenttitlehf}}
 			\fancyfoot[RE,LO]{\small \thepage}
 			\renewcommand{\headrulewidth}{0.5pt}
 			\renewcommand{\footrulewidth}{0.5pt}
@@ -545,7 +554,7 @@
 				\fancyhead[R]{
 					\begin{minipage}[t]{\hfwidthcourse\linewidth}
 						\begin{flushright}
-							\small \textit{\titulodelinforme}
+							\small \textit{\documenttitlehf}
 						\end{flushright}
 					\end{minipage}
 				}
@@ -553,7 +562,7 @@
 				\ifthenelse{\equal{\disablehfrightmark}{false}}{
 					\fancyhead[L]{\nouppercase{\rightmark}}
 				}{}
-				\fancyhead[R]{\small \textit{\titulodelinforme}}
+				\fancyhead[R]{\small \textit{\documenttitlehf}}
 			}
 			\fancyfoot[L]{}
 			\fancyfoot[R]{\small \thepage}
@@ -580,7 +589,7 @@
 				\fancyhead[R]{
 					\begin{minipage}[t]{\hfwidthcourse\linewidth}
 						\begin{flushright}
-							\small \textit{\titulodelinforme}
+							\small \textit{\documenttitlehf}
 						\end{flushright}
 					\end{minipage}
 				}
@@ -588,7 +597,7 @@
 				\ifthenelse{\equal{\disablehfrightmark}{false}}{
 					\fancyhead[L]{\nouppercase{\rightmark}}
 				}{}
-				\fancyhead[R]{\small \textit{\titulodelinforme}}
+				\fancyhead[R]{\small \textit{\documenttitlehf}}
 			}
 			\fancyfoot[L]{}
 			\fancyfoot[RE,LO]{\small \thepage}
@@ -615,7 +624,7 @@
 				\fancyhead[R]{
 					\begin{minipage}[t]{\hfwidthcourse\linewidth}
 						\begin{flushright}
-							\small \textit{\titulodelinforme}
+							\small \textit{\documenttitlehf}
 						\end{flushright}
 					\end{minipage}
 				}
@@ -623,7 +632,7 @@
 				\ifthenelse{\equal{\disablehfrightmark}{false}}{
 					\fancyhead[L]{\nouppercase{\rightmark}}
 				}{}
-				\fancyhead[R]{\small \textit{\titulodelinforme}}
+				\fancyhead[R]{\small \textit{\documenttitlehf}}
 			}
 			\fancyfoot[L]{}
 			\fancyfoot[LE,RO]{\small \thepage}
@@ -640,25 +649,25 @@
 			\ifthenelse{\equal{\disablehfrightmark}{false}}{
 				\fancyhead[L]{\nouppercase{\rightmark}}
 			}{}
-			\fancyhead[R]{\small \thepage \nomnpageof \pageref{LastPage}}
+			\fancyhead[R]{\small \thepage \namepageof \pageref{TotPages}}
 			\ifthenelse{\equal{\hfwidthwrap}{true}}{
 				\fancyfoot[L]{
 					\begin{minipage}[t]{\hfwidthtitle\linewidth}
 						\begin{flushleft}
-							\small \textit{\titulodelinforme}
+							\small \textit{\documenttitlehf}
 						\end{flushleft}
 					\end{minipage}
 				}
 				\fancyfoot[R]{
 					\begin{minipage}[t]{\hfwidthcourse\linewidth}
 						\begin{flushright}
-							\small \textit{\codigodelcurso \nombredelcurso}
+							\small \textit{\coursecode \coursename}
 						\end{flushright}
 					\end{minipage}
 				}
 			}{
-				\fancyfoot[L]{\small \textit{\titulodelinforme}}
-				\fancyfoot[R]{\small \textit{\codigodelcurso \nombredelcurso}}
+				\fancyfoot[L]{\small \textit{\documenttitlehf}}
+				\fancyfoot[R]{\small \textit{\coursecode \coursename}}
 			}
 			\renewcommand{\headrulewidth}{0.5pt}
 			\renewcommand{\footrulewidth}{0.5pt}
@@ -670,9 +679,9 @@
 		\pagestyle{fancy}
 		\newcommand{\COREstyledefinition}{
 			\fancyhf{}
-			\fancyfoot[L]{\departamentouniversidad}
-			\fancyfoot[C]{\thepage \nomnpageof \pageref{LastPage}}
-			\fancyfoot[R]{\nombreuniversidad}
+			\fancyfoot[L]{\universitydepartment}
+			\fancyfoot[C]{\thepage \namepageof \pageref{TotPages}}
+			\fancyfoot[R]{\universityname}
 			\renewcommand{\headrulewidth}{0pt}
 			\renewcommand{\footrulewidth}{0pt}
 		}
@@ -687,18 +696,18 @@
 				\fancyhead[L]{
 					\begin{minipage}[t]{\hfwidthtitle\linewidth}
 						\begin{flushleft}
-							\small \textit{\codigodelcurso \nombredelcurso}
+							\small \textit{\coursecode \coursename}
 						\end{flushleft}
 					\end{minipage}
 				}
 			}{
-				\fancyhead[L]{\small \textit{\codigodelcurso \nombredelcurso}}
+				\fancyhead[L]{\small \textit{\coursecode \coursename}}
 			}
 			\fancyhead[R]{%
-				\coreinsertkeyimage{\hfheaderimageparamsA}{\imagendepartamento}%
+				\coreinsertkeyimage{\hfheaderimageparamsA}{\universitydepartmentimage}%
 				\vspace{-0.15cm}%
 			}
-			\fancyfoot[C]{\thepage \nomnpageof \pageref{LastPage}}
+			\fancyfoot[C]{\thepage \namepageof \pageref{TotPages}}
 			\renewcommand{\headrulewidth}{0.5pt}
 			\renewcommand{\footrulewidth}{0pt}
 		}
@@ -712,7 +721,7 @@
 				\fancyhead[L]{\nouppercase{\rightmark}}
 			}{}
 			\fancyhead[R]{}
-			\fancyfoot[C]{\small \thepage \nomnpageof \pageref{LastPage}}
+			\fancyfoot[C]{\small \thepage \namepageof \pageref{TotPages}}
 			\renewcommand{\headrulewidth}{0.5pt}
 			\renewcommand{\footrulewidth}{0pt}
 		}
@@ -728,7 +737,7 @@
 			}{}
 			\fancyhead[R]{}
 			\fancyfoot[L]{
-				\small \codigodelcurso \nombredelcurso
+				\small \coursecode \coursename
 			}
 			\fancyfoot[R]{
 				\small \thepage
@@ -751,28 +760,22 @@
 	}{
 		\throwbadconfigondoc{Estilo de header-footer incorrecto}{\hfstyle}{style1 .. style16}}}}}}}}}}}}}}}}}}}}}}}}}}}}
 	}
+	% Aplica el estilo de página
 	\fancypagestyle{plain}{
 		\fancyheadoffset{0pt}
 		\COREstyledefinition
 	}
-
+	% Define estilos por defecto en flotantes
+	\floatpagestyle{plain}
+	\rotfloatpagestyle{plain}
+	
 	% -------------------------------------------------------------------------
 	% Muestra los números de línea
 	% -------------------------------------------------------------------------
 	\ifthenelse{\equal{\showlinenumbers}{true}}{
 		\linenumbers}{
 	}
-
-	% -------------------------------------------------------------------------
-	% Configura el nombre del abstract
-	% -------------------------------------------------------------------------
-	\ifthenelse{\isundefined{\abstractname}}{
-		\newcommand{\abstractname}{\nameabstract}
-		\throwwarning{La variable \noexpand\abstractname no existe, lo que indica que la libreria babel no se ha cargado. Si ha desactivado la configuracion \noexpand\usespanishbabel debe cargar manualmente la libreria babel con algun otro idioma, como por ejemplo \noexpand\usepackage[english]{babel}, o bien define en true la configuracion \noexpand\useenglishbabel}
-	}{
-		\renewcommand{\abstractname}{\nameabstract}
-	}
-
+	
 }
 
 % END

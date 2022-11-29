@@ -1,11 +1,9 @@
 % Template:     Informe LaTeX
 % Documento:    Archivo de ejemplo
-% Versión:      7.2.3 (15/06/2021)
+% Versión:      8.1.7 (24/07/2022)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
-%        Facultad de Ciencias Físicas y Matemáticas
-%        Universidad de Chile
 %        pablo@ppizarror.com
 %
 % Manual template: [https://latex.ppizarror.com/informe]
@@ -21,18 +19,19 @@
 
 \lipsum[2] % Párrafo ejemplo, se puede borrar	
 
+
 % ------------------------------------------------------------------------------
 % NUEVA SECCIÓN
 % ------------------------------------------------------------------------------
 \clearpage
-\section{Cómo lo utiliza.}
+\section{Cómo lo utiliza}
 
 \lipsum[2] % Párrafo ejemplo, se puede borrar	
-
 
 % ------------------------------------------------------------------------------
 % NUEVA SECCIÓN
 % ------------------------------------------------------------------------------
+% Inserta una sección sin número
 \clearpage
 \section{Volumen}
 
@@ -44,7 +43,6 @@
 \subsection{Cuál es el volumen de datos que procesa}
 \lipsum[1] % Párrafo ejemplo, se puede borrar	
 
-
 % ------------------------------------------------------------------------------
 % NUEVA SECCIÓN
 % ------------------------------------------------------------------------------
@@ -54,18 +52,19 @@ Cómo son sus datos
 \lipsum[1] % Párrafo ejemplo, se puede borrar	
 
 % ------------------------------------------------------------------------------
-% NUEVA SECCIÓN
+% NUEVA SECCIÓN
 % ------------------------------------------------------------------------------
 \clearpage
 \section{Velocidad}
 
 \subsection{Cuanto es el tiempo en que procesaba antes de usar Hadoop}
-\lipsum[1] % Párrafo ejemplo, se puede borrar	
+\lipsum[1]\scite{overleaf} % Párrafo ejemplo, se puede borrar	
 
 \subsection{Cuanto es el tiempo que procesa ahora que usa Hadoop}
 
+
 % ------------------------------------------------------------------------------
-% NUEVA SECCIÓN
+% NUEVA SECCIÓN
 % ------------------------------------------------------------------------------
 \clearpage
 \section{Veracidad}
@@ -73,29 +72,8 @@ Cómo son sus datos
 \subsection{Como probar que los datos que procesa sean válidos}
 \lipsum[1] % Párrafo ejemplo, se puede borrar	
 
-
 % ------------------------------------------------------------------------------
-% REFERENCIAS (ESTILO BIBTEX), revisar configuración \stylecitereferences
+% REFERENCIAS, revisar configuración \stylecitereferences
 % ------------------------------------------------------------------------------
-\clearpage % Salto de página
-\begin{references}
-	\bibitem{templateinforme}
-	Template Informe en \LaTeX.
-	\textit{¡Revisa el manual online de este template!} \\
-	\url{https://latex.ppizarror.com/informe}
-
-	\bibitem{excel2latex}
-	Excel2Latex.
-	\textit{Importa de forma sencilla tus tablas de Excel a \LaTeX.} \\
-	\url{https://www.ctan.org/tex-archive/support/excel2latex/}
-
-	\bibitem{overleaf}
-	Overleaf.
-	\textit{Uno de los mejores editores online para \LaTeX, renovado con su versión 2.0.} \\
-	\href{https://www.overleaf.com?r=298b935f&rm=d&rs=b}{\hreftext{https://es.overleaf.com/}}
-	
-	\bibitem{tablesgenerator}
-	Tables Generator.
-	\textit{Creador de tablas online para \LaTeX.}\\
-	\url{https://www.tablesgenerator.com}
-\end{references}
+\clearpage
+\bibliography{library}

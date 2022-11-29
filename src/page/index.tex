@@ -4,8 +4,6 @@
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
-%        Facultad de Ciencias Físicas y Matemáticas
-%        Universidad de Chile
 %        pablo@ppizarror.com
 %
 % Manual template: [https://latex.ppizarror.com/informe]
@@ -16,51 +14,42 @@
 	% -------------------------------------------------------------------------
 	% Crea nueva página y establece estilo de títulos
 	% -------------------------------------------------------------------------
-	\clearpage
-	\begingroup
-	\sectionfont{\color{\indextitlecolor} \fontsizetitlei \styletitlei \selectfont}
+	\clearpage%
+	\begingroup%
+	\sectionfont{\color{\indextitlecolor} \indexsectionfontsize \indexsectionstyle \selectfont}
 	
 	% -------------------------------------------------------------------------
 	% Salta de página si está imprimiendo por ambas caras
 	% -------------------------------------------------------------------------
-	\ifthenelse{\equal{\addemptypagetwosides}{true}}{
-		\checkoddpage
-		\ifoddpage
-		\else
-			\clearpage
-			\null
-			\thispagestyle{empty}
-			\clearpage
-			\addtocounter{page}{-1}
-		\fi}{
-	}
+	\ifthenelse{\equal{\GLOBALtwoside}{true}}{%
+		\coretriggeronpage{\emptypagespredocformat}{}%
+	}{}
 	
 	% -------------------------------------------------------------------------
 	% Añade la entrada del índice a los marcadores del pdf
 	% -------------------------------------------------------------------------
 	\ifthenelse{\equal{\addindextobookmarks}{true}}{
 		\phantomsection
-		\belowpdfbookmark{\nomltcont}{contents}}{
+		\belowpdfbookmark{\nameltcont}{contents}}{
 	}
 	\tocloftpagestyle{fancy}
 	
 	% -------------------------------------------------------------------------
 	% Configuración del punto en índice
 	% -------------------------------------------------------------------------
-	\ifthenelse{\equal{\showdotaftersnum}{true}}{
-		% Agrega los puntos
-		\def\cftchapaftersnum {.}
-		\def\cftsecaftersnum {.}
-		\def\cftsubsecaftersnum {.}
-		\def\cftsubsubsecaftersnum {.}
-		\def\cftsubsubsubsecaftersnum {.}
-		% Modifica los márgenes
+	% Agrega los puntos
+	\def\cftchapaftersnum {\charaftersectionnum}
+	\def\cftsecaftersnum {\charaftersectionnum}
+	\def\cftsubsecaftersnum {\charaftersectionnum}
+	\def\cftsubsubsecaftersnum {\charaftersectionnum}
+	\def\cftsubsubsubsecaftersnum {\charaftersectionnum}
+	% Modifica los márgenes
+	\ifthenelse{\equal{\charaftersectionnum}{}}{}{
 		\def\cftsecnumwidth {1.9em}
 		\def\cftsubsecnumwidth {2.57em} % Incremento 0.67
 		\renewcommand\cftsubsubsecnumwidth{3.35em} % Incremento 0.78
 		\setlength{\cftsubsecindent}{1.91em}
 		\setlength{\cftsubsubsecindent}{4.48em} % Incremento 2.57
-		}{
 	}
 	
 	% -------------------------------------------------------------------------
@@ -83,7 +72,7 @@
 	\ifthenelse{\equal{\showlinenumbers}{true}}{
 		\nolinenumbers}{
 	}
-
+	
 	% -------------------------------------------------------------------------
 	% Cambia tabulación índice de objetos para alinear con contenidos
 	% -------------------------------------------------------------------------
@@ -104,7 +93,6 @@
 	% -------------------------------------------------------------------------
 	% Calcula tamaño del margen de los números en objetos del índice
 	% -------------------------------------------------------------------------
-	
 	% Código fuente
 	\ifthenelse{\equal{\showsectioncaptioncode}{none}}{
 		\def\cftdefautnumwidthcode {3.0em} % Añade +0.7em
@@ -132,7 +120,7 @@
 	}{
 		\throwbadconfig{Valor configuracion incorrecto}{\showsectioncaptioncode}{none,chap,sec,ssec,sssec,ssssec}}}}}}
 	}
-
+	
 	% Código fuente
 	\ifthenelse{\equal{\showsectioncaptioneqn}{none}}{
 		\def\cftdefautnumwidtheqn {3.0em} % Añade +0.7em
@@ -236,7 +224,7 @@
 			\def\cftlstlistingnumwidth {\cftdefautnumwidthcode}
 		}}
 	}
-
+	
 	% Ecuaciones
 	\ifthenelse{\equal{\captionnumequation}{arabic}}{ % No hace nada (default)
 		\def\cftmyindexequationsnumwidth {\cftdefautnumwidtheqn}
@@ -264,7 +252,7 @@
 				\def\cftfignumwidth {\cftdefautnumwidthfig}
 			}}
 	}
-
+	
 	% Tablas
 	\ifthenelse{\equal{\captionnumtable}{arabic}}{ % No hace nada (default)
 		\def\cfttabnumwidth {\cftdefautnumwidthtab}
@@ -278,7 +266,7 @@
 				\def\cfttabnumwidth {\cftdefautnumwidthtab}
 			}}
 	}
-
+	
 	% -------------------------------------------------------------------------
 	% Genera las funciones para los índices
 	% -------------------------------------------------------------------------
@@ -286,9 +274,9 @@
 		\iftotalfigures
 			\ifthenelse{\equal{\indexnewpagef}{true}}{\clearpage}{}
 			\ifthenelse{\equal{\addindextobookmarks}{true}}{
-				\ifthenelse{\equal{\addindextobookmarks}{true}}{
+				\ifthenelse{\equal{\addindexsubtobookmarks}{true}}{
 					\phantomsection
-					\belowpdfbookmark{\nomltfigure}{clof}}{}}{
+					\belowpdfbookmark{\nameltfigure}{clof}}{}}{
 			}
 			\listoffigures
 		\fi
@@ -297,9 +285,9 @@
 		\iftotaltables
 			\ifthenelse{\equal{\indexnewpaget}{true}}{\clearpage}{}
 			\ifthenelse{\equal{\addindextobookmarks}{true}}{
-				\ifthenelse{\equal{\addindextobookmarks}{true}}{
+				\ifthenelse{\equal{\addindexsubtobookmarks}{true}}{
 					\phantomsection
-					\belowpdfbookmark{\nomlttable}{clot}}{}}{
+					\belowpdfbookmark{\namelttable}{clot}}{}}{
 			}
 			\listoftables
 		\fi
@@ -308,9 +296,9 @@
 		\iftotallstlistings
 			\ifthenelse{\equal{\indexnewpagec}{true}}{\clearpage}{}
 			\ifthenelse{\equal{\addindextobookmarks}{true}}{
-				\ifthenelse{\equal{\addindextobookmarks}{true}}{
+				\ifthenelse{\equal{\addindexsubtobookmarks}{true}}{
 					\phantomsection
-					\belowpdfbookmark{\nomltsrc}{clsrc}}{}}{
+					\belowpdfbookmark{\nameltsrc}{clsrc}}{}}{
 			}
 			\lstlistoflistings
 		\fi
@@ -319,14 +307,14 @@
 		\iftotaltemplateIndexEquationss
 			\ifthenelse{\equal{\indexnewpagee}{true}}{\clearpage}{}
 			\ifthenelse{\equal{\addindextobookmarks}{true}}{
-				\ifthenelse{\equal{\addindextobookmarks}{true}}{
+				\ifthenelse{\equal{\addindexsubtobookmarks}{true}}{
 					\phantomsection
-					\belowpdfbookmark{\nomlteqn}{cleqn}}{}}{
+					\belowpdfbookmark{\namelteqn}{cleqn}}{}}{
 			}
 			\listofmyindexequations
 		\fi
 	}
-
+	
 	% -------------------------------------------------------------------------
 	% Índice de contenidos
 	% -------------------------------------------------------------------------
@@ -337,30 +325,209 @@
 	% -------------------------------------------------------------------------
 	% Índice de objetos
 	% -------------------------------------------------------------------------
-	\ifthenelse{\equal{\indexstyle}{ftc}}{\LoIf\LoIt\LoIc}{\ifthenelse{\equal{\indexstyle}{}}{}{\ifthenelse{\equal{\indexstyle}{e}}{\LoIe}{\ifthenelse{\equal{\indexstyle}{c}}{\LoIc}{\ifthenelse{\equal{\indexstyle}{f}}{\LoIf}{\ifthenelse{\equal{\indexstyle}{t}}{\LoIt}{\ifthenelse{\equal{\indexstyle}{ec}}{\LoIe\LoIc}{\ifthenelse{\equal{\indexstyle}{ce}}{\LoIc\LoIe}{\ifthenelse{\equal{\indexstyle}{ef}}{\LoIe\LoIf}{\ifthenelse{\equal{\indexstyle}{fe}}{\LoIf\LoIe}{\ifthenelse{\equal{\indexstyle}{et}}{\LoIe\LoIt}{\ifthenelse{\equal{\indexstyle}{te}}{\LoIt\LoIe}{\ifthenelse{\equal{\indexstyle}{cf}}{\LoIc\LoIf}{\ifthenelse{\equal{\indexstyle}{fc}}{\LoIf\LoIc}{\ifthenelse{\equal{\indexstyle}{ct}}{\LoIc\LoIt}{\ifthenelse{\equal{\indexstyle}{tc}}{\LoIt\LoIc}{\ifthenelse{\equal{\indexstyle}{ft}}{\LoIf\LoIt}{\ifthenelse{\equal{\indexstyle}{tf}}{\LoIt\LoIf}{\ifthenelse{\equal{\indexstyle}{ecf}}{\LoIe\LoIc\LoIf}{\ifthenelse{\equal{\indexstyle}{efc}}{\LoIe\LoIf\LoIc}{\ifthenelse{\equal{\indexstyle}{cef}}{\LoIc\LoIe\LoIf}{\ifthenelse{\equal{\indexstyle}{cfe}}{\LoIc\LoIf\LoIe}{\ifthenelse{\equal{\indexstyle}{fec}}{\LoIf\LoIe\LoIc}{\ifthenelse{\equal{\indexstyle}{fce}}{\LoIf\LoIc\LoIe}{\ifthenelse{\equal{\indexstyle}{ect}}{\LoIe\LoIc\LoIt}{\ifthenelse{\equal{\indexstyle}{etc}}{\LoIe\LoIt\LoIc}{\ifthenelse{\equal{\indexstyle}{cet}}{\LoIc\LoIe\LoIt}{\ifthenelse{\equal{\indexstyle}{cte}}{\LoIc\LoIt\LoIe}{\ifthenelse{\equal{\indexstyle}{tec}}{\LoIt\LoIe\LoIc}{\ifthenelse{\equal{\indexstyle}{tce}}{\LoIt\LoIc\LoIe}{\ifthenelse{\equal{\indexstyle}{eft}}{\LoIe\LoIf\LoIt}{\ifthenelse{\equal{\indexstyle}{etf}}{\LoIe\LoIt\LoIf}{\ifthenelse{\equal{\indexstyle}{fet}}{\LoIf\LoIe\LoIt}{\ifthenelse{\equal{\indexstyle}{fte}}{\LoIf\LoIt\LoIe}{\ifthenelse{\equal{\indexstyle}{tef}}{\LoIt\LoIe\LoIf}{\ifthenelse{\equal{\indexstyle}{tfe}}{\LoIt\LoIf\LoIe}{\ifthenelse{\equal{\indexstyle}{cft}}{\LoIc\LoIf\LoIt}{\ifthenelse{\equal{\indexstyle}{ctf}}{\LoIc\LoIt\LoIf}{\ifthenelse{\equal{\indexstyle}{fct}}{\LoIf\LoIc\LoIt}{\ifthenelse{\equal{\indexstyle}{tcf}}{\LoIt\LoIc\LoIf}{\ifthenelse{\equal{\indexstyle}{tfc}}{\LoIt\LoIf\LoIc}{\ifthenelse{\equal{\indexstyle}{ecft}}{\LoIe\LoIc\LoIf\LoIt}{\ifthenelse{\equal{\indexstyle}{ectf}}{\LoIe\LoIc\LoIt\LoIf}{\ifthenelse{\equal{\indexstyle}{efct}}{\LoIe\LoIf\LoIc\LoIt}{\ifthenelse{\equal{\indexstyle}{eftc}}{\LoIe\LoIf\LoIt\LoIc}{\ifthenelse{\equal{\indexstyle}{etcf}}{\LoIe\LoIt\LoIc\LoIf}{\ifthenelse{\equal{\indexstyle}{etfc}}{\LoIe\LoIt\LoIf\LoIc}{\ifthenelse{\equal{\indexstyle}{ceft}}{\LoIc\LoIe\LoIf\LoIt}{\ifthenelse{\equal{\indexstyle}{cetf}}{\LoIc\LoIe\LoIt\LoIf}{\ifthenelse{\equal{\indexstyle}{cfet}}{\LoIc\LoIf\LoIe\LoIt}{\ifthenelse{\equal{\indexstyle}{cfte}}{\LoIc\LoIf\LoIt\LoIe}{\ifthenelse{\equal{\indexstyle}{ctef}}{\LoIc\LoIt\LoIe\LoIf}{\ifthenelse{\equal{\indexstyle}{ctfe}}{\LoIc\LoIt\LoIf\LoIe}{\ifthenelse{\equal{\indexstyle}{fect}}{\LoIf\LoIe\LoIc\LoIt}{\ifthenelse{\equal{\indexstyle}{fetc}}{\LoIf\LoIe\LoIt\LoIc}{\ifthenelse{\equal{\indexstyle}{fcet}}{\LoIf\LoIc\LoIe\LoIt}{\ifthenelse{\equal{\indexstyle}{fcte}}{\LoIf\LoIc\LoIt\LoIe}{\ifthenelse{\equal{\indexstyle}{ftec}}{\LoIf\LoIt\LoIe\LoIc}{\ifthenelse{\equal{\indexstyle}{ftce}}{\LoIf\LoIt\LoIc\LoIe}{\ifthenelse{\equal{\indexstyle}{tecf}}{\LoIt\LoIe\LoIc\LoIf}{\ifthenelse{\equal{\indexstyle}{tefc}}{\LoIt\LoIe\LoIf\LoIc}{\ifthenelse{\equal{\indexstyle}{tcef}}{\LoIt\LoIc\LoIe\LoIf}{\ifthenelse{\equal{\indexstyle}{tcfe}}{\LoIt\LoIc\LoIf\LoIe}{\ifthenelse{\equal{\indexstyle}{tfec}}{\LoIt\LoIf\LoIe\LoIc}{\ifthenelse{\equal{\indexstyle}{tfce}}{\LoIt\LoIf\LoIc\LoIe}{\throwbadconfig{Estilo desconocido del indice}{\indexstyle}{ftc,,e,c,f,t,ec,ce,ef,fe,et,te,cf,fc,ct,tc,ft,tf,ecf,efc,cef,cfe,fec,fce,ect,etc,cet,cte,tec,tce,eft,etf,fet,fte,tef,tfe,cft,ctf,fct,tcf,tfc,ecft,ectf,efct,eftc,etcf,etfc,ceft,cetf,cfet,cfte,ctef,ctfe,fect,fetc,fcet,fcte,ftec,ftce,tecf,tefc,tcef,tcfe,tfec,tfce}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
-
+	\ifthenelse{\equal{\indexstyle}{ftc}}{%
+		\LoIf\LoIt\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{}}{%
+	}{
+	\ifthenelse{\equal{\indexstyle}{e}}{%
+		\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{c}}{%
+		\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{f}}{%
+		\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{t}}{%
+		\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{ec}}{%
+		\LoIe\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{ce}}{%
+		\LoIc\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{ef}}{%
+		\LoIe\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{fe}}{%
+		\LoIf\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{et}}{%
+		\LoIe\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{te}}{%
+		\LoIt\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{cf}}{%
+		\LoIc\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{fc}}{%
+		\LoIf\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{ct}}{%
+		\LoIc\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{tc}}{%
+		\LoIt\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{ft}}{%
+		\LoIf\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{tf}}{%
+		\LoIt\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{ecf}}{%
+		\LoIe\LoIc\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{efc}}{%
+		\LoIe\LoIf\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{cef}}{%
+		\LoIc\LoIe\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{cfe}}{%
+		\LoIc\LoIf\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{fec}}{%
+		\LoIf\LoIe\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{fce}}{%
+		\LoIf\LoIc\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{ect}}{%
+		\LoIe\LoIc\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{etc}}{%
+		\LoIe\LoIt\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{cet}}{%
+		\LoIc\LoIe\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{cte}}{%
+		\LoIc\LoIt\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{tec}}{%
+		\LoIt\LoIe\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{tce}}{%
+		\LoIt\LoIc\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{eft}}{%
+		\LoIe\LoIf\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{etf}}{%
+		\LoIe\LoIt\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{fet}}{%
+		\LoIf\LoIe\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{fte}}{%
+		\LoIf\LoIt\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{tef}}{%
+		\LoIt\LoIe\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{tfe}}{%
+		\LoIt\LoIf\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{cft}}{%
+		\LoIc\LoIf\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{ctf}}{%
+		\LoIc\LoIt\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{fct}}{%
+		\LoIf\LoIc\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{tcf}}{%
+		\LoIt\LoIc\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{tfc}}{%
+		\LoIt\LoIf\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{ecft}}{%
+		\LoIe\LoIc\LoIf\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{ectf}}{%
+		\LoIe\LoIc\LoIt\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{efct}}{%
+		\LoIe\LoIf\LoIc\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{eftc}}{%
+		\LoIe\LoIf\LoIt\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{etcf}}{%
+		\LoIe\LoIt\LoIc\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{etfc}}{%
+		\LoIe\LoIt\LoIf\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{ceft}}{%
+		\LoIc\LoIe\LoIf\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{cetf}}{%
+		\LoIc\LoIe\LoIt\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{cfet}}{%
+		\LoIc\LoIf\LoIe\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{cfte}}{%
+		\LoIc\LoIf\LoIt\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{ctef}}{%
+		\LoIc\LoIt\LoIe\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{ctfe}}{%
+		\LoIc\LoIt\LoIf\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{fect}}{%
+		\LoIf\LoIe\LoIc\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{fetc}}{%
+		\LoIf\LoIe\LoIt\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{fcet}}{%
+		\LoIf\LoIc\LoIe\LoIt
+	}{
+	\ifthenelse{\equal{\indexstyle}{fcte}}{%
+		\LoIf\LoIc\LoIt\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{ftec}}{%
+		\LoIf\LoIt\LoIe\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{ftce}}{%
+		\LoIf\LoIt\LoIc\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{tecf}}{%
+		\LoIt\LoIe\LoIc\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{tefc}}{%
+		\LoIt\LoIe\LoIf\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{tcef}}{%
+		\LoIt\LoIc\LoIe\LoIf
+	}{
+	\ifthenelse{\equal{\indexstyle}{tcfe}}{%
+		\LoIt\LoIc\LoIf\LoIe
+	}{
+	\ifthenelse{\equal{\indexstyle}{tfec}}{%
+		\LoIt\LoIf\LoIe\LoIc
+	}{
+	\ifthenelse{\equal{\indexstyle}{tfce}}{%
+		\LoIt\LoIf\LoIc\LoIe
+	}{
+		\throwbadconfig{Estilo desconocido del indice}{\indexstyle}{ftc,,e,c,f,t,ec,ce,ef,fe,et,te,cf,fc,ct,tc,ft,tf,ecf,efc,cef,cfe,fec,fce,ect,etc,cet,cte,tec,tce,eft,etf,fet,fte,tef,tfe,cft,ctf,fct,tcf,tfc,ecft,ectf,efct,eftc,etcf,etfc,ceft,cetf,cfet,cfte,ctef,ctfe,fect,fetc,fcet,fcte,ftec,ftce,tecf,tefc,tcef,tcfe,tfec,tfce}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+	}
+	
 	% -------------------------------------------------------------------------
 	% Termina el bloque de índice
 	% -------------------------------------------------------------------------
+	\sectionfont{\color{\sectioncolor} \sectionfontsize \sectionfontstyle \selectfont}
 	\endgroup
 	
-	% -------------------------------------------------------------------------
-	% Se añade una página en blanco
-	% -------------------------------------------------------------------------
-	\clearpage
-	\ifthenelse{\equal{\addemptypagetwosides}{true}}{
-		\vfill
-		\checkoddpage
-		\ifoddpage
-			\clearpage
-			\null
-			\thispagestyle{empty}
-			\clearpage
-			\addtocounter{page}{-1}
-		\else
-		\fi}{
-	}
-
 }
 
 % END

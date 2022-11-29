@@ -4,55 +4,51 @@
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
-%        Facultad de Ciencias Físicas y Matemáticas
-%        Universidad de Chile
 %        pablo@ppizarror.com
 %
 % Manual template: [https://latex.ppizarror.com/informe]
 % Licencia MIT:    [https://opensource.org/licenses/MIT]
 
-% -----------------------------------------------------------------------------
 % Se revisa si las variables no han sido borradas
-% -----------------------------------------------------------------------------
-\checkvardefined{\autordeldocumento}
-\checkvardefined{\codigodelcurso}
-\checkvardefined{\departamentouniversidad}
-\checkvardefined{\imagendepartamentoparams}
-\checkvardefined{\localizacionuniversidad}
-\checkvardefined{\nombredelcurso}
-\checkvardefined{\nombrefacultad}
-\checkvardefined{\nombreuniversidad}
-\checkvardefined{\temaatratar}
-\checkvardefined{\titulodelinforme}
+\checkvardefined{\coursecode}
+\checkvardefined{\coursename}
+\checkvardefined{\documentauthor}
+\checkvardefined{\documentsubject}
+\checkvardefined{\documenttitle}
+\checkvardefined{\universitydepartment}
+\checkvardefined{\universitydepartmentimagecfg}
+\checkvardefined{\universityfaculty}
+\checkvardefined{\universitylocation}
+\checkvardefined{\universityname}
 
 % -----------------------------------------------------------------------------
 % Se añade \xspace a las variables
 % -----------------------------------------------------------------------------
 \makeatletter
-	\g@addto@macro\autordeldocumento\xspace
-	\g@addto@macro\codigodelcurso\xspace
-	\g@addto@macro\departamentouniversidad\xspace
-	\g@addto@macro\localizacionuniversidad\xspace
-	\g@addto@macro\nombredelcurso\xspace
-	\g@addto@macro\nombrefacultad\xspace
-	\g@addto@macro\nombreuniversidad\xspace
-	\g@addto@macro\temaatratar\xspace
-	\g@addto@macro\titulodelinforme\xspace
+	\g@addto@macro\coursecode\xspace
+	\g@addto@macro\coursename\xspace
+	\g@addto@macro\documentauthor\xspace
+	\g@addto@macro\documentsubject\xspace
+	\g@addto@macro\documenttitle\xspace
+	\g@addto@macro\universitydepartment\xspace
+	\g@addto@macro\universityfaculty\xspace
+	\g@addto@macro\universitylocation\xspace
+	\g@addto@macro\universityname\xspace
 \makeatother
 
 % -----------------------------------------------------------------------------
 % Se crean variables si se borraron
 % -----------------------------------------------------------------------------
-\ifthenelse{\isundefined{\tablaintegrantes}}{
-	\errmessage{LaTeX Warning: Se borro la variable \noexpand\tablaintegrantes, creando una vacia}
-	\def\tablaintegrantes {}}{
+\ifthenelse{\isundefined{\authortable}}{
+	\errmessage{LaTeX Warning: Se borro la variable \noexpand\authortable, creando una vacia}
+	\def\authortable {}}{
 }
 
-% -----------------------------------------------------------------------------
-% Verifica tamaños de fuentes
-% -----------------------------------------------------------------------------
-\corecheckfontsize{\captionfontsize}
-\corecheckfontsize{\subcaptionfsize}
+\ifthenelse{\equal{\documentsubtitle}{}}{
+	\def\documenttitlehf {\documenttitle}
+}{
+	\def\documenttitlehf {\documentsubtitle}
+}
 
 % -----------------------------------------------------------------------------
 % Se activan números en menú marcadores del pdf
@@ -70,33 +66,34 @@
 	\def\cfgpdfpagemode {UseNone}
 }
 \ifthenelse{\equal{\usepdfmetadata}{true}}{
-	\def\pdfmetainfoautor {\autordeldocumento}
-	\def\pdfmetainfocodigodelcurso {\codigodelcurso}
-	\def\pdfmetainfonombredelcurso {\nombredelcurso}
-	\def\pdfmetainfoautor {\autordeldocumento}
-	\def\pdfmetainfotema {\temaatratar}
-	\def\pdfmetainfotitulo {\titulodelinforme}
-	\def\pdfmetainfounidepto {\departamentouniversidad}
-	\def\pdfmetainfounifacultad {\nombrefacultad}
-	\def\pdfmetainfouninombre {\nombreuniversidad}
-	\def\pdfmetainfouniubicacion {\localizacionuniversidad}
+	\def\pdfmetainfoauthor {\documentauthor}
+	\def\pdfmetainfocoursecode {\coursecode}
+	\def\pdfmetainfocoursename {\coursename}
+	\def\pdfmetainfosubject {\documentsubject}
+	\def\pdfmetainfotitle {\documenttitle}
+	\def\pdfmetainfouniversity {\universityname}
+	\def\pdfmetainfouniversitydepartment {\universitydepartment}
+	\def\pdfmetainfouniversityfaculty {\universityfaculty}
+	\def\pdfmetainfouniversitylocation {\universitylocation}
+	\author{\pdfmetainfoauthor}
+	\title{\pdfmetainfotitle}
 }{
-	\def\pdfmetainfoautor {}
-	\def\pdfmetainfocodigodelcurso {}
-	\def\pdfmetainfonombredelcurso {}
-	\def\pdfmetainfoautor {}
-	\def\pdfmetainfotema {}
-	\def\pdfmetainfotitulo {}
-	\def\pdfmetainfounidepto {}
-	\def\pdfmetainfounifacultad {}
-	\def\pdfmetainfouninombre {}
-	\def\pdfmetainfouniubicacion {}
+	\def\pdfmetainfoauthor {}
+	\def\pdfmetainfocoursecode {}
+	\def\pdfmetainfocoursename {}
+	\def\pdfmetainfosubject {}
+	\def\pdfmetainfotitle {}
+	\def\pdfmetainfouniversity {}
+	\def\pdfmetainfouniversitydepartment {}
+	\def\pdfmetainfouniversityfaculty {}
+	\def\pdfmetainfouniversitylocation {}
 }
 \hypersetup{
+	keeppdfinfo,
 	bookmarksopen={\cfgpdfbookmarkopen},
 	bookmarksopenlevel={\cfgbookmarksopenlevel},
 	bookmarkstype={toc},
-	pdfauthor={\pdfmetainfoautor},
+	pdfauthor={\pdfmetainfoauthor},
 	pdfcenterwindow={\cfgpdfcenterwindow},
 	pdfcopyright={\cfgpdfcopyright},
 	pdfcreator={LaTeX},
@@ -104,31 +101,31 @@
 	pdfencoding={unicode},
 	pdffitwindow={\cfgpdffitwindow},
 	pdfinfo={
-		Curso.Codigo={\pdfmetainfocodigodelcurso},
-		Curso.Nombre={\pdfmetainfonombredelcurso},
-		Documento.Autor={\pdfmetainfoautor},
-		Documento.Tema={\pdfmetainfotema},
-		Documento.Titulo={\pdfmetainfotitulo},
-		Template.Autor.Alias={ppizarror},
-		Template.Autor.Email={pablo@ppizarror.com},
-		Template.Autor.Nombre={Pablo Pizarro R.},
-		Template.Autor.Web={https://ppizarror.com},
-		Template.Codificacion={UTF-8},
-		Template.Fecha={DEV},
-		Template.Latex.Compilador={pdflatex},
-		Template.Licencia.Tipo={MIT},
-		Template.Licencia.Web={https://opensource.org/licenses/MIT},
-		Template.Nombre={Template-Informe},
-		Template.Tipo={Normal},
+		Course.Code={\pdfmetainfocoursecode},
+		Course.Name={\pdfmetainfocoursename},
+		Document.Author={\pdfmetainfoauthor},
+		Document.Subject={\pdfmetainfosubject},
+		Document.Title={\pdfmetainfotitle},
+		Template.Author.Alias={ppizarror},
+		Template.Author.Email={pablo@ppizarror.com},
+		Template.Author.Web={https://ppizarror.com},
+		Template.Author={Pablo Pizarro R.},
+		Template.Date={DEV},
+		Template.Encoding={UTF-8},
+		Template.Latex.Compiler={pdflatex},
+		Template.License.Type={MIT},
+		Template.License.Web={https://opensource.org/licenses/MIT},
+		Template.Name={Template-Informe},
+		Template.Type={Normal},
 		Template.Version.Dev={DEV},
 		Template.Version.Hash={DEV},
 		Template.Version.Release={DEV},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Informe},
 		Template.Web.Manual={https://latex.ppizarror.com/informe},
-		Universidad.Departamento={\pdfmetainfounidepto},
-		Universidad.Facultad={\pdfmetainfounifacultad},
-		Universidad.Nombre={\pdfmetainfouninombre},
-		Universidad.Ubicacion={\pdfmetainfouniubicacion}
+		University.Department={\pdfmetainfouniversitydepartment},
+		University.Faculty={\pdfmetainfouniversityfaculty},
+		University.Location={\pdfmetainfouniversitylocation},
+		University.Name={\pdfmetainfouniversity}
 	},
 	pdfkeywords={\cfgpdfkeywords},
 	pdfmenubar={\cfgpdfmenubar},
@@ -138,8 +135,8 @@
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
-	pdfsubject={\pdfmetainfotema},
-	pdftitle={\pdfmetainfotitulo},
+	pdfsubject={\pdfmetainfosubject},
+	pdftitle={\pdfmetainfotitle},
 	pdftoolbar={\cfgpdftoolbar}
 }
 
@@ -161,13 +158,11 @@
 % -----------------------------------------------------------------------------
 % Definición de valores e dimensiones
 % -----------------------------------------------------------------------------
-\renewcommand{\baselinestretch}{\documentinterline} % Ajuste del entrelineado
+\setstretch{\documentinterline} % Ajuste del entrelineado
 \setlength{\headheight}{64 pt} % Tamaño de la cabecera sin fancyhdr
-% \setcounter{MaxMatrixCols}{20} % Número máximo de columnas en matrices
-\setlength{\footnotemargin}{\marginfootnote pt} % Margen del footnote
 \setlength{\columnsep}{\columnsepwidth em} % Separación entre columnas
 \ifthenelse{\equal{\showlinenumbers}{true}}{
-	\setlength{\linenumbersep}{0.50cm}
+	\setlength{\linenumbersep}{\marginlinenumbers pt}
 	\renewcommand\linenumberfont{\normalfont\tiny\color{\linenumbercolor}}
 	}{
 }
@@ -198,12 +193,13 @@
 		hidelinks,
 		colorlinks=true,
 		citecolor=\numcitecolor,
+		filecolor=\urlcolor,
 		linkcolor=\linkcolor,
 		urlcolor=\urlcolor
 	}
 }
-\ifthenelse{\equal{\colorpage}{white}}{}{
-	\pagecolor{\colorpage}
+\ifthenelse{\equal{\pagescolor}{white}}{}{
+	\pagecolor{\pagescolor}
 }
 
 % -----------------------------------------------------------------------------
@@ -221,6 +217,7 @@
 }
 
 % Se configura el texto de los caption
+\corecheckfontsize{\captionfontsize}
 \captionsetup{
 	font={\captionfontsize},
 	labelfont={color=\captioncolor, \captiontextbold},
@@ -231,12 +228,12 @@
 }
 
 % Configura texto de los subcaption
+\corecheckfontsize{\subcaptionfsize}
 \captionsetup*[subfigure]{
 	font={\subcaptionfsize},
 	labelfont={color=\captioncolor, \captiontextsubnumbold},
 	labelformat={\subcaptionlabelformat},
 	labelsep={\subcaptionlabelsep},
-	% listofformat={subparens},
 	lofdepth=1,
 	textfont={color=\captiontextcolor},
 	singlelinecheck=on
@@ -246,7 +243,6 @@
 	labelfont={color=\captioncolor, \captiontextsubnumbold},
 	labelformat={\subcaptionlabelformat},
 	labelsep={\subcaptionlabelsep},
-	% listofformat={subparens},
 	lofdepth=1,
 	textfont={color=\captiontextcolor},
 	singlelinecheck=on
@@ -315,6 +311,26 @@
 	\setlength{\bibsep}{\natbibrefsep pt}
 	\newcommand{\shortcite}[1]{\citep{#1}}
 	\newcommand{\fullcite}[1]{\citet{#1}}
+	% Caracteres citas
+	\setcitestyle{open={\natbibrefcitecharopen},close={\natbibrefcitecharclose}}
+	% Separador citas
+	\ifthenelse{\equal{\natbibrefcitesepcomma}{true}}{
+		\setcitestyle{comma}
+	}{
+		\setcitestyle{semicolon}
+	}
+	% Tipo citas
+	\ifthenelse{\equal{\natbibrefcitetype}{numbers}}{
+		\setcitestyle{numbers}
+	}{
+	\ifthenelse{\equal{\natbibrefcitetype}{authoryear}}{
+		\setcitestyle{authoryear}
+	}{
+	\ifthenelse{\equal{\natbibrefcitetype}{super}}{
+		\setcitestyle{super}
+	}{
+		\throwbadconfig{Tipo cita natbib desconocido}{\natbibrefcitetype}{numbers,authoryear,super}}}
+	}
 }{
 \ifthenelse{\equal{\stylecitereferences}{apacite}}{
 	\def\twocolumnreferencesmargin{-0.39cm}
@@ -355,7 +371,9 @@
 \ifthenelse{\equal{\stylecitereferences}{apacite}}{
 	\ifthenelse{\equal{\apaciterefnumber}{true}}{
 		\newcounter{apaciteNumberCounter}
-		\renewcommand{\theapaciteNumberCounter}{\apaciterefnumberinit\arabic{apaciteNumberCounter}\apaciterefnumberfinal} % Formato de número
+		\renewcommand{\theapaciteNumberCounter}{ % Formato de número
+			\apaciterefcitecharopen\arabic{apaciteNumberCounter}\apaciterefcitecharclose
+		}
 		\patchcmd{\@lbibitem}{\item[}{\item[\stepcounter{apaciteNumberCounter}{\hss\llap{\theapaciteNumberCounter}\quad}}{}{}
 		\setlength{\bibleftmargin}{2.54em}
 		\setlength{\bibindent}{-0.54em}
@@ -397,7 +415,7 @@
 % -----------------------------------------------------------------------------
 % Configuración anexo
 % -----------------------------------------------------------------------------
-\patchcmd{\appendices}{\quad}{\sectionappendixlastchar\quad}{}{}
+\patchcmd{\appendices}{\quad}{\charappendixsection\spacingaftersection}{}{}
 
 % -----------------------------------------------------------------------------
 % Se añade listings (código fuente) a tocloft
@@ -414,7 +432,7 @@
 % -----------------------------------------------------------------------------
 % Crea índice de ecuaciones
 % -----------------------------------------------------------------------------
-\newcommand{\listindexequationsname}{\nomlteqn}
+\newcommand{\listindexequationsname}{\namelteqn}
 \newlistof{myindexequations}{equ}{\listindexequationsname}
 \newcommand{\myindexequations}[1]{
 	\addcontentsline{equ}{myindexequations}{\protect\numberline{\theequation}#1}
@@ -442,43 +460,26 @@
 \vfuzz=200pt
 \hbadness=\maxdimen
 \vbadness=\maxdimen
-% \sloppy Sloppy arruina portadas al exigir "justify", desde 6.4.2 se desactiva
 
 % -----------------------------------------------------------------------------
 % Configura las fuentes
 % -----------------------------------------------------------------------------
 \makeatletter
-\def\Hv@scale{.95}
+\def\Hv@scale {.95}
 \makeatother
 
 % -----------------------------------------------------------------------------
 % Configuraciones de las tablas
 % -----------------------------------------------------------------------------
-
-% Reinicia el número de cada fila en todas las tablas
-\makeatletter
+\makeatletter % Reinicia el número de cada fila en todas las tablas
 \preto\tabular{\global\rownum=\z@}
 \preto\tabularx{\global\rownum=\z@}
 \makeatother
 
 % -----------------------------------------------------------------------------
-% Se activa el modo estricto de revisión de números de página
-% -----------------------------------------------------------------------------
-\strictpagecheck
-
-% -----------------------------------------------------------------------------
-% Actualización márgen títulos
-% -----------------------------------------------------------------------------
-\titlespacing{\section}{0pt}{20pt}{10pt}
-\titlespacing{\subsection}{0pt}{15pt}{10pt}
-
-% -----------------------------------------------------------------------------
 % Se activa el word-wrap para textos con \texttt{}
 % -----------------------------------------------------------------------------
 \ttfamily \hyphenchar\the\font=`\-
-\makeatletter
-\g@addto@macro{\UrlBreaks}{\UrlOrds} % Word-wrap para las \url
-\makeatother
 
 % -----------------------------------------------------------------------------
 % Se define el tipo de texto de los url
@@ -499,7 +500,7 @@
 	\pdfcompresslevel=\pdfcompilecompression
 	
 	% El óptimo es 2, según
-	% http://texdoc.net/texmf-dist/doc/pdftex/manual/pdftex-a.pdf p.20
+	% https://texdoc.org/serve/pdftex-a.pdf/0 p.20
 	\pdfdecimaldigits=2
 	
 	% Inclusión de PDF
@@ -519,46 +520,65 @@
 }
 
 % -----------------------------------------------------------------------------
-% Profundidad de las secciones
+% Crea las sub-sub-sub-secciones
 % -----------------------------------------------------------------------------
-\setcounter{secnumdepth}{4} % Límite máximo subsubsubsección
-
-% Crea las subsubsubsecciones
 \newcounter{subsubsubsection}[subsubsection]
 
-% Establece el número de las subsubsubsecciones
-\ifthenelse{\equal{\showdotaftersnum}{true}}{ % Agrega punto tras el número
-	\renewcommand{\thesubsubsubsection}{\thesubsubsection.\arabic{subsubsubsection}.}
-	\renewcommand{\theparagraph}{\thesubsubsubsection.\arabic{paragraph}.}
-}{
-	\renewcommand{\thesubsubsubsection}{\thesubsubsection.\arabic{subsubsubsection}}
-	\renewcommand{\theparagraph}{\thesubsubsubsection.\arabic{paragraph}}
-}
+% Límite máximo profundidad
+\setcounter{secnumdepth}{4}
+
+% Agrega compatibilidad de sub-sub-sub-secciones al TOC
+\makeatletter
+	\def\toclevel@subsubsubsection {4}
+	\def\toclevel@paragraph {5}
+	\def\toclevel@subparagraph {6}
+	\ifthenelse{\equal{\charaftersectionnum}{}}{ % Sin caracter
+		\def\l@subsubsubsection {\@dottedtocline{4}{6.97em}{4em}}
+		\def\l@paragraph {\@dottedtocline{5}{10.97em}{5em}}
+		\def\l@subparagraph {\@dottedtocline{6}{14em}{6em}}
+	}{ % Posee caracter, Incremento 0.77+3.35 a 3.35
+		\def\l@subsubsubsection {\@dottedtocline{4}{7.83em}{4.15em}}
+		\def\l@paragraph {\@dottedtocline{5}{11.98em}{4.92em}}
+		\def\l@subparagraph {\@dottedtocline{6}{14.65em}{5.69em}}
+	}
+\makeatother
 
 % -----------------------------------------------------------------------------
-% Agrega compatibilidad de subsubsubsecciones al TOC
+% Configura el número de las secciones
 % -----------------------------------------------------------------------------
+% Funciones de bajo nivel
 \makeatletter
-	\def\toclevel@subsubsubsection{4}
-	\def\toclevel@paragraph{5}
-	\def\toclevel@subparagraph{6}
-	\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}
-		{3.25ex \@plus 1ex \@minus .2ex}
-		{-1em}
-		{\normalfont\normalsize\bfseries}}
-	\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}
-		{3.25ex \@plus 1ex \@minus .2ex}
-		{-1em}
-		{\normalfont\normalsize\bfseries}}
-	\ifthenelse{\equal{\showdotaftersnum}{true}}{
-		\def\l@subsubsubsection{\@dottedtocline{4}{7.83em}{4.15em}} % Incremento 0.77+3.35 a 3.35
-		\def\l@paragraph{\@dottedtocline{5}{11.98em}{4.92em}}
-		\def\l@subparagraph{\@dottedtocline{6}{14.65em}{5.69em}}
-	}{
-		\def\l@subsubsubsection{\@dottedtocline{4}{6.97em}{4em}}
-		\def\l@paragraph{\@dottedtocline{5}{10.97em}{5em}}
-		\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
-	}
+\newcommand\sectionpunct[2]{%
+	\expandafter\def\csname @seccntfmt@#1\endcsname##1{%
+		\csname the##1\endcsname#2%
+	}%
+}
+\def\@seccntformat#1{\@ifundefined{#1@cntformat}%
+	{\csname the#1\endcsname} % Default
+	{\csname #1@cntformat\endcsname} % Control individual
+}
+% Configura secciones
+\newcommand\section@cntformat{\GLOBALtitlepresectionstr\thesection\charaftersectionnum\spacingaftersection}
+\newcommand\subsection@cntformat{\GLOBALtitlepresubsectionstr\thesubsection\charaftersectionnum\spacingaftersection}
+\newcommand\subsubsection@cntformat{\GLOBALtitlepresubsubsectionstr\thesubsubsection\charaftersectionnum\spacingaftersection}
+\makeatother
+
+% -----------------------------------------------------------------------------
+% Actualización margen títulos
+% -----------------------------------------------------------------------------
+\titlespacing*{\section}{\sectionspacingleft pt}{\sectionspacingtop pt plus 0pt minus 4pt}{\sectionspacingbottom pt plus 0pt minus 2pt}
+\titlespacing*{\subsection}{\ssectionspacingleft pt}{\ssectionspacingtop pt plus 0pt minus 2pt}{\ssectionspacingbottom pt plus 0pt minus 2pt}
+\titlespacing*{\subsubsection}{\sssectionspacingleft pt}{\sssectionspacingtop pt plus 0pt minus 2pt}{\sssectionspacingbottom pt plus 0pt minus 2pt}
+\titlespacing*{\subsubsubsection}{\ssssectionspacingleft pt}{\ssssectionspacingtop pt plus 0pt minus 2pt}{\ssssectionspacingbottom pt plus 0pt minus 2pt}
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\paragspacingleft pt}
+	{\paragspacingtop pt \@plus 0pt \@minus 2pt}
+	{\paragspacingbottom pt \@plus 0pt \@minus 2pt}
+	{\color{\paragcolor}\normalfont\paragfontsize\paragfontstyle}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\paragsubspacingleft pt}
+	{\paragsubspacingtop pt \@plus 0pt \@minus 2pt}
+	{\paragsubspacingbottom pt \@plus 0pt \@minus 2pt}
+	{\color{\paragsubcolor}\normalfont\paragsubfontsize\paragsubfontstyle}}
 \makeatother
 
 % -----------------------------------------------------------------------------
@@ -567,8 +587,9 @@
 \setcounter{tocdepth}{\indexdepth}
 
 % -----------------------------------------------------------------------------
-% Restauración número footnote
+% Configuración footnotes
 % -----------------------------------------------------------------------------
+% Restaura número
 \ifthenelse{\equal{\footnoterestart}{none}}{
 	% \counterwithout*{footnote}{chapter}
 }{
@@ -593,6 +614,20 @@
 	\throwbadconfig{Formato reinicio numero footnote desconocido}{\footnoterestart}{none,chap,page,sec,ssec,sssec,ssssec}}}}}}}
 }
 
+% Define el tamaño del margen
+\setlength{\footnotemargin}{\footnotelmargin pt}
+
+% Previene footnote en otras páginas
+\interfootnotelinepenalty=10000
+
+% Configura tablas y figuras
+\ifthenelse{\equal{\footnoterulefigure}{false}}{
+	\floatsetup[figure]{footnoterule=none}}{
+}
+\ifthenelse{\equal{\footnoteruletable}{false}}{
+	\floatsetup[table]{footnoterule=none}}{
+}
+
 % -----------------------------------------------------------------------------
 % Restauración número ecuación, NOTA: NO hace nada, sólo se modifica en title.tex
 % -----------------------------------------------------------------------------
@@ -614,9 +649,9 @@
 % -----------------------------------------------------------------------------
 % Configuración elementos matemáticos
 % -----------------------------------------------------------------------------
-\newtheoremstyle{miestilo}{\baselineskip}{3pt}{\itshape}{}{\bfseries}{}{.5em}{}
-\newtheoremstyle{miobs}{\baselineskip}{3pt}{}{}{\bfseries}{}{.5em}{}
-\theoremstyle{miestilo}
+\newtheoremstyle{templatetheorem}{\baselineskip}{3pt}{\itshape}{}{\bfseries}{}{.5em}{}
+\newtheoremstyle{templateobs}{\baselineskip}{3pt}{}{}{\bfseries}{}{.5em}{}
+\theoremstyle{templatetheorem}
 
 % Configura números
 \ifthenelse{\equal{\showsectioncaptionmat}{none}}{
@@ -663,14 +698,34 @@
 }{
 	\throwbadconfig{Valor configuracion incorrecto}{\showsectioncaptionmat}{none,chap,sec,ssec,sssec,ssssec}}}}}}
 }
-\theoremstyle{miobs}
+\theoremstyle{templateobs}
 \newtheorem*{ej}{\namemathej}
 \newtheorem*{obs}{\namemathobs}
 
 % -----------------------------------------------------------------------------
+% Configura el formato oneside/twoside
+% -----------------------------------------------------------------------------
+% Normaliza el formato de páginas
+\raggedbottom
+
+% Desactiva \cleardoublepage hasta el inicio del documento
+\let\oldcleardoublepage\cleardoublepage
+\let\cleardoublepage\clearpage
+
+% Modifica el formato de nuevas páginas predoc y \cleardoublepage 
+\ifthenelse{\equal{\twopagesclearformat}{blank}}{
+	\let\emptypagespredocformat\insertblankpage
+}{
+\ifthenelse{\equal{\twopagesclearformat}{empty}}{
+	\let\emptypagespredocformat\insertemptypage
+}{
+	\throwbadconfig{Valor configuracion incorrecto}{\twopagesclearformat}{blank,empty}}
+}
+
+% -----------------------------------------------------------------------------
 % Configuraciones del idioma
 % -----------------------------------------------------------------------------
-% Desactiva carácteres acentuados en operaciones matemáticas
+% Desactiva caracteres acentuados en operaciones matemáticas
 \unaccentedoperators
 
 % -----------------------------------------------------------------------------
@@ -686,16 +741,109 @@
 % -----------------------------------------------------------------------------
 % Formato de columnas
 % -----------------------------------------------------------------------------
+% Centrado
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{\CColor}[2]{>{\columncolor{#1}\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#2}}
+
+\newcolumntype{P}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{\PColor}[2]{>{\columncolor{#1}\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#2}}
+
+\newcolumntype{B}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}b{#1}}
+\newcolumntype{\BColor}[2]{>{\columncolor{#1}\centering\let\newline\\\arraybackslash\hspace{0pt}}b{#2}}
+
+% Izquierda
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{\LColor}[2]{>{\columncolor{#1}\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#2}}
+\newcolumntype{T}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{\TColor}[2]{>{\columncolor{#1}\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#2}}
+\newcolumntype{F}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}b{#1}}
+\newcolumntype{\FColor}[2]{>{\columncolor{#1}\raggedright\let\newline\\\arraybackslash\hspace{0pt}}b{#2}}
+
+% Derecha
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{\RColor}[2]{>{\columncolor{#1}\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#2}}
+\newcolumntype{H}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{\HColor}[2]{>{\columncolor{#1}\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#2}}
+\newcolumntype{G}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}b{#1}}
+\newcolumntype{\GColor}[2]{>{\columncolor{#1}\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}b{#2}}
+
+% -----------------------------------------------------------------------------
+% Parcha el entorno tablenotes
+% -----------------------------------------------------------------------------
+\BeforeBeginEnvironment{tablenotes}{%
+	\tablenotesfontsize\selectfont%
+}
+\AfterEndEnvironment{tablenotes}{%
+	\normalsize\selectfont%
+}
 
 % -----------------------------------------------------------------------------
 % Parcha el entorno multicols
 % -----------------------------------------------------------------------------
 \let\SOURCEcaptionlrmargin\captionlrmargin
-\BeforeBeginEnvironment{multicols}{\def\captionlrmargin{\captionlrmarginmc}\def\GLOBALenvmulticol{true}\setcaptionmargincm{\captionlrmargin}}
-\AfterEndEnvironment{multicols}{\def\captionlrmargin{\SOURCEcaptionlrmargin}\def\GLOBALenvmulticol{false}\setcaptionmargincm{\captionlrmargin}}
+\newcounter{multicoldepth}
+\setcounter{multicoldepth}{0}
+\BeforeBeginEnvironment{multicols}{%
+	\def\captionlrmargin {\captionlrmarginmc}%
+	\global\def\GLOBALenvmulticol {true}%
+	\setcaptionmargincm{\captionlrmargin}%
+	\addtocounter{multicoldepth}{1}%
+}
+\AfterEndEnvironment{multicols}{%
+	\def\captionlrmargin {\SOURCEcaptionlrmargin}%
+	\setcaptionmargincm{\captionlrmargin}%
+	\addtocounter{multicoldepth}{-1}
+	\ifnumequal{\number\value{multicoldepth}}{0}{%
+		\global\def\GLOBALenvmulticol {false}
+	}{}
+}
+
+% -----------------------------------------------------------------------------
+% Configura estilos de listas
+% -----------------------------------------------------------------------------
+% Enumerate
+\def\labelenumi {\textcolor{\enumerateitemcolor}{\senumerti}}
+\def\labelenumii {\textcolor{\enumerateitemcolor}{\senumertii}}
+\def\labelenumiii {\textcolor{\enumerateitemcolor}{\senumertiii}}
+\def\labelenumiv {\textcolor{\enumerateitemcolor}{\senumertiv}}
+
+% Itemize
+\def\labelitemi {\textcolor{\itemizeitemcolor}{\sitemizei}}
+\def\labelitemii {\textcolor{\itemizeitemcolor}{\sitemizeii}}
+\def\labelitemiii {\textcolor{\itemizeitemcolor}{\sitemizeiii}}
+\def\labelitemiv {\textcolor{\itemizeitemcolor}{\sitemizeiv}}
+
+% Márgenes
+\setlength\leftmargini{\sitemsmargini pt}
+\setlength\leftmarginii{\sitemsmarginii pt}
+\setlength\leftmarginiii{\sitemsmarginiii pt}
+\setlength\leftmarginiv{\sitemsmarginiv pt}
+
+% -----------------------------------------------------------------------------
+% Chequea que ciertos módulos no hayan sido cargados antes del inicio del documento
+% -----------------------------------------------------------------------------
+\checkmodulenotloaded{tcolorbox}
+
+% -----------------------------------------------------------------------------
+% Da soporte a \hl{} del paquete soul
+% -----------------------------------------------------------------------------
+\soulregister\cite7
+\soulregister\eqref7
+\soulregister\eqref7
+\soulregister\footnote7
+\soulregister\href7
+\soulregister\pageref7
+\soulregister\quotes7
+\soulregister\ref7
+\soulregister\scite7
+
+% -----------------------------------------------------------------------------
+% Configura métodos aplicados al iniciar el documento
+% -----------------------------------------------------------------------------
+\AtBeginDocument{%
+	\normalfont%
+	\setlength{\parindent}{\documentparindent pt}%
+	\setlength{\parskip}{\documentparskip pt}%
+}
 
 % END

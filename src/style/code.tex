@@ -4,19 +4,25 @@
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
-%        Facultad de Ciencias Físicas y Matemáticas
-%        Universidad de Chile
 %        pablo@ppizarror.com
 %
 % Manual template: [https://latex.ppizarror.com/informe]
 % Licencia MIT:    [https://opensource.org/licenses/MIT]
 
-% -----------------------------------------------------------------------------
+% ABAP
+\lstdefinestyle{abap}{
+	language=ABAP
+}
+
+% Ada
+\lstdefinestyle{ada}{
+	language=[2005]Ada
+}
+
 % Assembler
-% -----------------------------------------------------------------------------
 \lstdefinelanguage[x64]{Assembler}[x86masm]{Assembler}{
 	morekeywords={
-		CDQE,CQO,CMPSQ,CMPXCHG16B,JRCXZ,LODSQ,MOVSXD,POPFQ,PUSHFQ,SCASQ,STOSQ,IRETQ,RDTSCP,SWAPGS,rax,rdx,rcx,rbx,rsi,rdi,rsp,rbp,r8,r8d,r8w,r8b,r9,r9d,r9w,r9b,r10,r10d,r10w,r10b,r11,r11d,r11w,r11b,r12,r12d,r12w,r12b,r13,r13d,r13w,r13b,r14,r14d,r14w,r14b,r15,r15d,r15w,r15b
+		CDQE,CMPSQ,CMPXCHG16B,CQO,IRETQ,JRCXZ,LODSQ,MOVSXD,POPFQ,PUSHFQ,r8,r8b,r8d,r8w,r9,r9b,r9d,r9w,r10,r10b,r10d,r10w,r11,r11b,r11d,r11w,r12,r12b,r12d,r12w,r13,r13b,r13d,r13w,r14,r14b,r14d,r14w,r15,r15b,r15d,r15w,rax,rbp,rbx,rcx,rdi,RDTSCP,rdx,rsi,rsp,SCASQ,STOSQ,SWAPGS
 	}
 }
 \lstdefinestyle{assemblerx64}{
@@ -26,9 +32,12 @@
 	language=[x86masm]Assembler
 }
 
-% -----------------------------------------------------------------------------
+% Awk
+\lstdefinestyle{awk}{
+	language=[gnu]Awk
+}
+
 % Bash
-% -----------------------------------------------------------------------------
 \lstdefinestyle{bash}{
 	language=bash,
 	breakatwhitespace=false,
@@ -40,41 +49,48 @@
 	sensitive=false
 }
 
-% -----------------------------------------------------------------------------
 % Basic
-% -----------------------------------------------------------------------------
 \lstdefinestyle{basic}{
 	language=[Visual]Basic
 }
 
-% -----------------------------------------------------------------------------
 % C
-% -----------------------------------------------------------------------------
 \lstdefinestyle{c}{
 	language=C,
 	breakatwhitespace=false,
 	keepspaces=true
 }
 
-% -----------------------------------------------------------------------------
+% Caml
+\lstdefinestyle{caml}{
+	language=[light]Caml
+}
+
+% CMake
+\lstdefinestyle{cmake}{
+	language=[gnu] make,
+	keywordstyle=[2]\color{dkcyan},
+	morekeywords=[1]{
+		add_custom_command,add_custom_target,add_definitions,add_executable,add_library,add_subdirectory,cmake_minimum_required,cmake_policy,configure_file,cuda_add_library,cuda_include_directories,else,elseif,endforeach,endfunction,endif,endmacro,execute_process,file,find_library,find_package,find_path,find_program,foreach,function,get_directory_property,get_filename_component,get_filename_component,get_source_file_property,get_target_property,if,include,include_directories,install,link_directories,list,macro,mark_as_advanced,message,option,PKG_CHECK_MODULES,project,set,SET_CHECK_CXX_FLAGS,set_property,set_source_files_properties,set_target_properties,string,target_compile_options,target_include_directories,target_link_libraries,unset
+	},
+	morekeywords=[2]{
+		AND,APPEND,APPLE,ARCHIVE,CACHE,CMAKE_CURRENT_LIST_DIR,CMAKE_CXX_STANDARD,CMAKE_MODULE_PATH,CMAKE_SYSTEM_NAME,COMMAND,COMMENT,COMPILE_DEFINITIONS,CONFIG,DEFINED,DEPENDS,DESTINATION,DIRECTORY,ENDIF,ENV,EQUAL,ERROR_QUIET,EXISTS,FATAL_ERROR,FILES,FILES_MATCHING,FIND,FIND,FIND_LIBRARY,FORCE,GLOB,GREATER,IF,INCLUDE_DIRECTORIES,IS_ABSOLUTE,LESS,LIBRARY,LINK_PRIVATE,LIST,MAIN_DEPENDENCY,MAKE_DIRECTORY,MARK_AS_ADVANCED,MATCHALL,MATCHES,NOT,OBJECT,OFF,ON,OPTIONAL,OR,OUTPUT,OUTPUT_STRIP_TRAILING_WHITESPACE,OUTPUT_VARIABLE,PARENT_SCOPE,PATTERN,PRE_BUILD_COMMAND,PRE_LINK,PRIVATE,PROJECT_NAME,PROPERTIES,PROPERTY,PUBLIC,REGEX,RELEASE,RENAME,REQUIRED,RUNTIME,SET,STATIC,STREQUAL,SYSTEM,TARGET,TARGETS,TOUPPER,UNIX,VERSION,VERSION_EQUAL,VERSION_LESS,WIN32,WORKING_DIRECTORY
+	}
+}
+
 % Cobol
-% -----------------------------------------------------------------------------
 \lstdefinestyle{cobol}{
 	language=Cobol
 }
 
-% -----------------------------------------------------------------------------
 % C++
-% -----------------------------------------------------------------------------
 \lstdefinestyle{cpp}{
 	language=C++,
 	breakatwhitespace=false,
-	morecomment=[l][\color{magenta}]{\#}
+	morekeywords={NULL}
 }
 
-% -----------------------------------------------------------------------------
 % C#
-% -----------------------------------------------------------------------------
 \lstdefinestyle{csharp}{
 	language=csh,
 	morecomment=[l]{//},
@@ -84,9 +100,7 @@
 	}
 }
 
-% -----------------------------------------------------------------------------
 % CSS
-% -----------------------------------------------------------------------------
 \lstdefinelanguage{CSS}{
 	morecomment=[s]{/*}{*/},
 	morekeywords={
@@ -100,16 +114,12 @@
 	breakatwhitespace=true
 }
 
-% -----------------------------------------------------------------------------
-% CSV, Archivos separados por coma
-% -----------------------------------------------------------------------------
+% CSV
 \lstdefinestyle{csv}{
 	language={}
 }
 
-% -----------------------------------------------------------------------------
 % CUDA
-% -----------------------------------------------------------------------------
 \lstdefinestyle{cuda}{
 	language=C++,
 	breakatwhitespace=false,
@@ -121,9 +131,18 @@
 	moredelim=[s][\ttfamily]{<<<}{>>>}
 }
 
-% -----------------------------------------------------------------------------
-% DOCKER
-% -----------------------------------------------------------------------------
+% Dart
+\lstdefinestyle{dart}{
+	language=Java,
+	emph=[2]{
+		findAllElements,findElements
+	},
+	morekeywords={
+		*,get,library,List,num,set,String,var
+	}
+}
+
+% Docker
 \lstdefinelanguage{docker}{
 	comment=[l]{\#},
 	keywords={
@@ -137,17 +156,53 @@
 	breakatwhitespace=true
 }
 
-% -----------------------------------------------------------------------------
+% Elisp
+\lstdefinestyle{elisp}{
+	language=elisp
+}
+
+% Elixir
+\lstdefinestyle{elixir}{
+	morekeywords={
+		case,catch,def,do,else,false,use,alias,receive,timeout,defmacro,defp,for,if,import,defmodule,defprotocol,nil,defmacrop,defoverridable,defimpl,super,fn,raise,true,try,end,with,unless
+	},
+	otherkeywords={
+		<-,->, |>, \%\{, \}, \{, \, (, )
+	},
+	morecomment=[l]{\#},
+	morecomment=[n]{/*}{*/},
+	morecomment=[s][\color{purple}]{:}{\ },
+	morestring=[s][\color{mauve}]"",
+	sensitive=true
+}
+
+% Erlang
+\lstdefinestyle{erlang}{
+	language=erlang
+}
+
 % Fortran-95
-% -----------------------------------------------------------------------------
 \lstdefinestyle{fortran}{
 	language=[95]Fortran,
 	breakatwhitespace=false
 }
 
-% -----------------------------------------------------------------------------
-% GLSL - Shaders
-% -----------------------------------------------------------------------------
+% F#
+\lstdefinestyle{fsharp}{
+	morecomment=[l][\color{dkgreen}]{///},
+	morecomment=[l][\color{dkgreen}]{//},
+	morecomment=[s][\color{dkgreen}]{{(*}{*)}},
+	morestring=[b]",
+	morekeywords={
+		abstract,and,Application,Array,Async,async,begin,cloud,do,else,end,false,finally,for,fun,function,if,in,inherit,interface,let,List,match,member,module,mutable,namespace,new,of,open,rec,return,Seq,static,System,then,true,try,type,use,while,with,yield
+	},
+	otherkeywords={
+		by,do!,from,let!,order,return!,select,use!,var,where,yield!
+	},
+	sensitive=true
+}
+
+% GLSL
 \lstdefinelanguage{GLSL}{
 	alsoletter={\#},
 	morekeywords=[1]{
@@ -170,31 +225,23 @@
 	upquote=true
 }
 
-% -----------------------------------------------------------------------------
 % Gnuplot
-% -----------------------------------------------------------------------------
 \lstdefinestyle{gnuplot}{
 	language=Gnuplot
 }
 
-% -----------------------------------------------------------------------------
 % Go
-% -----------------------------------------------------------------------------
 \lstdefinestyle{go}{
 	language=Go
 }
 
-% -----------------------------------------------------------------------------
 % Haskell
-% -----------------------------------------------------------------------------
 \lstdefinestyle{haskell}{
 	language=haskell,
 	morecomment=[l]\%
 }
 
-% -----------------------------------------------------------------------------
 % HTML5
-% -----------------------------------------------------------------------------
 \lstdefinelanguage{HTML5}{
 	language=html,
 	alsoletter={<>=-},
@@ -202,10 +249,10 @@
 	ndkeywords={
 		% General
 		=,
-		% HTML attributes
-		accept=,accept-charset=,accesskey=,action=,align=,alt=,async=,autocomplete=,autofocus=,autoplay=,autosave=,bgcolor=,border=,buffered=,challenge=,charset=,checked=,cite=,class=,code=,codebase=,color=,cols=,colspan=,content=,contenteditable=,contextmenu=,controls=,coords=,data=,datetime=,default=,defer=,dir=,dirname=,disabled=,download=,draggable=,dropzone=,enctype=,for=,form=,formaction=,headers=,height=,hidden=,high=,href=,hreflang=,http-equiv=,icon=,id=,ismap=,itemprop=,keytype=,kind=,label=,lang=,language=,list=,loop=,low=,manifest=,max=,maxlength=,media=,method=,min=,multiple=,name=,novalidate=,open=,optimum=,pattern=,ping=,placeholder=,poster=,preload=,pubdate=,radiogroup=,readonly=,rel=,required=,reversed=,rows=,rowspan=,sandbox=,scope=,scoped=,seamless=,selected=,shape=,size=,sizes=,span=,spellcheck=,src=,srcdoc=,srclang=,start=,step=,style=,summary=,tabindex=,target=,title=,type=,usemap=,value=,width=,wrap=,
-		% CSSproperties
-		accelerator:,azimuth:,background:,background-attachment:,background-color:,background-image:,background-position:,background-position-x:,background-position-y:,background-repeat:,behavior:,border:,border-bottom:,border-bottom-color:,border-bottom-style:,border-bottom-width:,border-collapse:,border-color:,border-left:,border-left-color:,border-left-style:,border-left-width:,border-right:,border-right-color:,border-right-style:,border-right-width:,border-spacing:,border-style:,border-top:,border-top-color:,border-top-style:,border-top-width:,border-width:,bottom:,caption-side:,clear:,clip:,color:,content:,counter-increment:,counter-reset:,cue:,cue-after:,cue-before:,cursor:,direction:,display:,elevation:,empty-cells:,filter:,float:,font:,font-family:,font-size:,font-size-adjust:,font-stretch:,font-style:,font-variant:,font-weight:,height:,ime-mode:,include-source:,layer-background-color:,layer-background-image:,layout-flow:,layout-grid:,layout-grid-char:,layout-grid-char-spacing:,layout-grid-line:,layout-grid-mode:,layout-grid-type:,left:,letter-spacing:,line-break:,line-height:,list-style:,list-style-image:,list-style-position:,list-style-type:,margin:,margin-bottom:,margin-left:,margin-right:,margin-top:,marker-offset:,marks:,max-height:,max-width:,min-height:,min-width:,transition-duration:,transition-property:,transition-timing-function:,transform:,-moz-transform:,-moz-binding:,-moz-border-radius:,-moz-border-radius-topleft:,-moz-border-radius-topright:,-moz-border-radius-bottomright:,-moz-border-radius-bottomleft:,-moz-border-top-colors:,-moz-border-right-colors:,-moz-border-bottom-colors:,-moz-border-left-colors:,-moz-opacity:,-moz-outline:,-moz-outline-color:,-moz-outline-style:,-moz-outline-width:,-moz-user-focus:,-moz-user-input:,-moz-user-modify:,-moz-user-select:,orphans:,outline:,outline-color:,outline-style:,outline-width:,overflow:,overflow-X:,overflow-Y:,padding:,padding-bottom:,padding-left:,padding-right:,padding-top:,page:,page-break-after:,page-break-before:,page-break-inside:,pause:,pause-after:,pause-before:,pitch:,pitch-range:,play-during:,position:,quotes:,-replace:,richness:,right:,ruby-align:,ruby-overhang:,ruby-position:,-set-link-source:,size:,speak:,speak-header:,speak-numeral:,speak-punctuation:,speech-rate:,stress:,scrollbar-arrow-color:,scrollbar-base-color:,scrollbar-dark-shadow-color:,scrollbar-face-color:,scrollbar-highlight-color:,scrollbar-shadow-color:,scrollbar-3d-light-color:,scrollbar-track-color:,table-layout:,text-align:,text-align-last:,text-decoration:,text-indent:,text-justify:,text-overflow:,text-shadow:,text-transform:,text-autospace:,text-kashida-space:,text-underline-position:,top:,unicode-bidi:,-use-link-source:,vertical-align:,visibility:,voice-family:,volume:,white-space:,widows:,width:,word-break:,word-spacing:,word-wrap:,writing-mode:,z-index:,zoom:
+		% Atributos HTML
+		accept-charset=,accept=,accesskey=,action=,align=,alt=,async=,autocomplete=,autofocus=,autoplay=,autosave=,bgcolor=,border=,buffered=,challenge=,charset=,checked=,cite=,class=,code=,codebase=,color=,cols=,colspan=,content=,contenteditable=,contextmenu=,controls=,coords=,data=,datetime=,default=,defer=,dir=,dirname=,disabled=,download=,draggable=,dropzone=,enctype=,for=,form=,formaction=,headers=,height=,hidden=,high=,href=,hreflang=,http-equiv=,icon=,id=,ismap=,itemprop=,keytype=,kind=,label=,lang=,language=,list=,loop=,low=,manifest=,max=,maxlength=,media=,method=,min=,multiple=,name=,novalidate=,open=,optimum=,pattern=,ping=,placeholder=,poster=,preload=,pubdate=,radiogroup=,readonly=,rel=,required=,reversed=,rows=,rowspan=,sandbox=,scope=,scoped=,seamless=,selected=,shape=,size=,sizes=,span=,spellcheck=,src=,srcdoc=,srclang=,start=,step=,style=,summary=,tabindex=,target=,title=,type=,usemap=,value=,width=,wrap=,
+		% Propiedades CSS
+		-moz-binding:,-moz-border-bottom-colors:,-moz-border-left-colors:,-moz-border-radius-bottomleft:,-moz-border-radius-bottomright:,-moz-border-radius-topleft:,-moz-border-radius-topright:,-moz-border-radius:,-moz-border-right-colors:,-moz-border-top-colors:,-moz-opacity:,-moz-outline-color:,-moz-outline-style:,-moz-outline-width:,-moz-outline:,-moz-transform:,-moz-user-focus:,-moz-user-input:,-moz-user-modify:,-moz-user-select:,-replace:,-set-link-source:,-use-link-source:,accelerator:,azimuth:,background-attachment:,background-color:,background-image:,background-position-x:,background-position-y:,background-position:,background-repeat:,background:,behavior:,border-bottom-color:,border-bottom-style:,border-bottom-width:,border-bottom:,border-collapse:,border-color:,border-left-color:,border-left-style:,border-left-width:,border-left:,border-right-color:,border-right-style:,border-right-width:,border-right:,border-spacing:,border-style:,border-top-color:,border-top-style:,border-top-width:,border-top:,border-width:,border:,bottom:,caption-side:,clear:,clip:,color:,content:,counter-increment:,counter-reset:,cue-after:,cue-before:,cue:,cursor:,direction:,display:,elevation:,empty-cells:,filter:,float:,font-family:,font-size-adjust:,font-size:,font-stretch:,font-style:,font-variant:,font-weight:,font:,height:,ime-mode:,include-source:,layer-background-color:,layer-background-image:,layout-flow:,layout-grid-char-spacing:,layout-grid-char:,layout-grid-line:,layout-grid-mode:,layout-grid-type:,layout-grid:,left:,letter-spacing:,line-break:,line-height:,list-style-image:,list-style-position:,list-style-type:,list-style:,margin-bottom:,margin-left:,margin-right:,margin-top:,margin:,marker-offset:,marks:,max-height:,max-width:,min-height:,min-width:,orphans:,outline-color:,outline-style:,outline-width:,outline:,overflow-X:,overflow-Y:,overflow:,padding-bottom:,padding-left:,padding-right:,padding-top:,padding:,page-break-after:,page-break-before:,page-break-inside:,page:,pause-after:,pause-before:,pause:,pitch-range:,pitch:,play-during:,position:,quotes:,richness:,right:,ruby-align:,ruby-overhang:,ruby-position:,scrollbar-3d-light-color:,scrollbar-arrow-color:,scrollbar-base-color:,scrollbar-dark-shadow-color:,scrollbar-face-color:,scrollbar-highlight-color:,scrollbar-shadow-color:,scrollbar-track-color:,size:,speak-header:,speak-numeral:,speak-punctuation:,speak:,speech-rate:,stress:,table-layout:,text-align-last:,text-align:,text-autospace:,text-decoration:,text-indent:,text-justify:,text-kashida-space:,text-overflow:,text-shadow:,text-transform:,text-underline-position:,top:,transform:,transition-duration:,transition-property:,transition-timing-function:,unicode-bidi:,vertical-align:,visibility:,voice-family:,volume:,white-space:,widows:,width:,word-break:,word-spacing:,word-wrap:,writing-mode:,z-index:,zoom:
 	},
 	otherkeywords={
 		<,</,>,</a,<a,</a>,</abbr,<abbr,</abbr>,</address,<address,</address>,</area,<area,</area>,</area,<area,</area>,</article,<article,</article>,</aside,<aside,</aside>,</audio,<audio,</audio>,</audio,<audio,</audio>,</b,<b,</b>,</base,<base,</base>,</bdi,<bdi,</bdi>,</bdo,<bdo,</bdo>,</blockquote,<blockquote,</blockquote>,</body,<body,</body>,</br,<br,</br>,</button,<button,</button>,</canvas,<canvas,</canvas>,</caption,<caption,</caption>,</cite,<cite,</cite>,</code,<code,</code>,</col,<col,</col>,</colgroup,<colgroup,</colgroup>,</data,<data,</data>,</datalist,<datalist,</datalist>,</dd,<dd,</dd>,</del,<del,</del>,</details,<details,</details>,</dfn,<dfn,</dfn>,</div,<div,</div>,</dl,<dl,</dl>,</dt,<dt,</dt>,</em,<em,</em>,</embed,<embed,</embed>,</fieldset,<fieldset,</fieldset>,</figcaption,<figcaption,</figcaption>,</figure,<figure,</figure>,</footer,<footer,</footer>,</form,<form,</form>,</h1,<h1,</h1>,</h2,<h2,</h2>,</h3,<h3,</h3>,</h4,<h4,</h4>,</h5,<h5,</h5>,</h6,<h6,</h6>,</head,<head,</head>,</header,<header,</header>,</hr,<hr,</hr>,</html,<html,</html>,</i,<i,</i>,</iframe,<iframe,</iframe>,</img,<img,</img>,</input,<input,</input>,</ins,<ins,</ins>,</kbd,<kbd,</kbd>,</keygen,<keygen,</keygen>,</label,<label,</label>,</legend,<legend,</legend>,</li,<li,</li>,</link,<link,</link>,</main,<main,</main>,</map,<map,</map>,</mark,<mark,</mark>,</math,<math,</math>,</menu,<menu,</menu>,</menuitem,<menuitem,</menuitem>,</meta,<meta,</meta>,</meter,<meter,</meter>,</nav,<nav,</nav>,</noscript,<noscript,</noscript>,</object,<object,</object>,</ol,<ol,</ol>,</optgroup,<optgroup,</optgroup>,</option,<option,</option>,</output,<output,</output>,</p,<p,</p>,</param,<param,</param>,</pre,<pre,</pre>,</progress,<progress,</progress>,</q,<q,</q>,</rp,<rp,</rp>,</rt,<rt,</rt>,</ruby,<ruby,</ruby>,</s,<s,</s>,</samp,<samp,</samp>,</script,<script,</script>,</section,<section,</section>,</select,<select,</select>,</small,<small,</small>,</source,<source,</source>,</span,<span,</span>,</strong,<strong,</strong>,</style,<style,</style>,</summary,<summary,</summary>,</sup,<sup,</sup>,</svg,<svg,</svg>,</table,<table,</table>,</tbody,<tbody,</tbody>,</td,<td,</td>,</template,<template,</template>,</textarea,<textarea,</textarea>,</tfoot,<tfoot,</tfoot>,</th,<th,</th>,</thead,<thead,</thead>,</time,<time,</time>,</title,<title,</title>,</tr,<tr,</tr>,</track,<track,</track>,</u,<u,</u>,</ul,<ul,</ul>,</var,<var,</var>,</video,<video,</video>,</wbr,<wbr,</wbr>,/>,<!
@@ -213,7 +260,7 @@
 	sensitive=true,
 	tag=[s]
 }
-\lstdefinestyle{html5}{
+\lstdefinestyle{html}{
 	language=HTML5,
 	alsodigit={.:;},
 	alsolanguage=JavaScript,
@@ -222,9 +269,7 @@
 	numberfirstline=true
 }
 
-% -----------------------------------------------------------------------------
 % INI, Archivos de configuraciones
-% -----------------------------------------------------------------------------
 \lstdefinestyle{ini}{
 	language={},
 	commentstyle=\color{gray}\ttfamily,
@@ -236,18 +281,14 @@
 	otherkeywords={=,:}
 }
 
-% -----------------------------------------------------------------------------
 % Java
-% -----------------------------------------------------------------------------
 \lstdefinestyle{java}{
 	language=Java,
 	breakatwhitespace=true,
 	keepspaces=true
 }
 
-% -----------------------------------------------------------------------------
 % Javascript
-% -----------------------------------------------------------------------------
 \lstdefinelanguage{JavaScript}{
 	comment=[l]{//},
 	keepspaces=true,
@@ -267,13 +308,8 @@
 \lstdefinestyle{javascript}{
 	language=JavaScript
 }
-\lstdefinestyle{js}{
-	language=JavaScript
-}
 
-% -----------------------------------------------------------------------------
 % JSON
-% -----------------------------------------------------------------------------
 \lstdefinestyle{json}{
 	literate=*{0}{{{\color{numb}0}}}{1}{1}{{{\color{numb}1}}}{1}{2}
 	{{{\color{numb}2}}}{1}{3}{{{\color{numb}3}}}{1}{4}{{{\color{numb}4}}}
@@ -285,9 +321,19 @@
 	tabsize=2
 }
 
-% -----------------------------------------------------------------------------
+% Julia
+\lstdefinestyle{julia}{
+	keywordsprefix=\@,
+	morecomment=[l]{\#},
+	morekeywords={
+		abstract,Any,applicable,assert,baremodule,begin,bitstype,Bool,break,catch,ccall,Complex64,Complex128,const,continue,convert,dlopen,dlsym,do,edit,else,elseif,end,eps,error,exit,export,finalizer,Float32,Float64,for,function,global,hash,if,im,immutable,import,importall,in,Inf,Int,Int8,Int16,Int32,Int64,invoke,is,isa,isequal,let,load,local,macro,method_exists,module,Nan,new,None,Nothing,ntuple,pi,promote,promote_type,quote,realmax,realmin,return,sizeof,subtype,system,throw,try,tuple,type,typealias,typemax,typemin,typeof,uid,Uint,Uint8,Uint16,Uint32,Uint64,using,while,whos
+	},
+	morestring=[b]',
+	morestring=[b]",
+	sensitive=true
+}
+
 % Kotlin
-% -----------------------------------------------------------------------------
 \lstdefinestyle{kotlin}{
 	comment=[l]{//},
 	emph={delegate,filter,first,firstOrNull,forEach,lazy,map,mapNotNull,println,
@@ -306,9 +352,7 @@
 	sensitive=true
 }
 
-% -----------------------------------------------------------------------------
 % LaTeX
-% -----------------------------------------------------------------------------
 \lstdefinestyle{latex}{
 	language=TeX,
 	morekeywords={
@@ -316,24 +360,28 @@
 	}
 }
 
-% -----------------------------------------------------------------------------
 % Lisp
-% -----------------------------------------------------------------------------
 \lstdefinestyle{lisp}{
 	language=Lisp,
 	morekeywords={if}
 }
 
-% -----------------------------------------------------------------------------
-% Lua
-% -----------------------------------------------------------------------------
-\lstdefinestyle{lua}{
-	language={[5.2]Lua}
+% LLVM
+\lstdefinestyle{llvm}{
+	language=LLVM
 }
 
-% -----------------------------------------------------------------------------
+% Lua
+\lstdefinestyle{lua}{
+	language={[5.3]Lua}
+}
+
+% Make
+\lstdefinestyle{make}{
+	language=[gnu] make
+}
+
 % Maple
-% -----------------------------------------------------------------------------
 \lstdefinelanguage{Maple}{
 	morecomment=[l]\#,
 	morekeywords={
@@ -347,16 +395,12 @@
 	language=Maple
 }
 
-% -----------------------------------------------------------------------------
 % Mathematica
-% -----------------------------------------------------------------------------
 \lstdefinestyle{mathematica}{
 	language=Mathematica
 }
 
-% -----------------------------------------------------------------------------
 % Matlab
-% -----------------------------------------------------------------------------
 \lstdefinestyle{matlab}{
 	language=Matlab,
 	deletekeywords={fft},
@@ -368,9 +412,30 @@
 	}
 }
 
-% -----------------------------------------------------------------------------
+% Mercury
+\lstdefinestyle{mercury}{
+	language=Mercury
+}
+
+% Modula-2
+\lstdefinestyle{modula2}{
+	language=Modula-2
+}
+
+% Objective-C
+\lstdefinestyle{objectivec}{
+	language=[Objective]C,
+	breakatwhitespace=false,
+	keepspaces=true,
+	moredirectives={
+		import
+	},
+	morekeywords={
+		@catch,@class,@dynamic,@encode,@end,@finally,@implementation,@interface,@package,@private,@property,@protected,@protocol,@public,@selector,@synchronized,@synthesize,@throw,@try,assign,BOOL,bycopy,byref,Class,copy,id,IMP,in,inout,Nil,nil,NO,nonatomic,oneway,out,readonly,readwrite,retain,SEL,self,super,YES,_cmd
+	}
+}
+
 % Octave
-% -----------------------------------------------------------------------------
 \lstdefinestyle{octave}{
 	language=Octave,
 	keepspaces=true,
@@ -378,22 +443,18 @@
 	morecomment=[n]{\%\{\^^M}{\%\}\^^M}
 }
 
-% -----------------------------------------------------------------------------
 % OpenCL
-% -----------------------------------------------------------------------------
 \lstdefinestyle{opencl}{
 	language=C++,
 	breakatwhitespace=false,
 	emph={
-		bool3,bool4,bool8,bool16,char2,char3,char4,char8,char16,complex,constant,event_t,bool2,float2,float3,float4,float8,float16,global,half2,half3,half4,half8,half16,image2d_t,image3d_t,imaginary,int2,int3,int4,int8,int16,kernel,local,long2,long3,long4,long8,long16,private,quad,quad2,quad3,quad4,quad8,quad16,sampler_t,short2,short3,short4,short8,short16,uchar2,uchar3,uchar4,uchar8,uchar16,uint2,uint3,uint4,uint8,uint16,ulong2,ulong3,ulong4,ulong8,ulong16,ushort2,ushort3,ushort4,ushort8,ushort16,__constant,__global,__kernel,__local,__private
+		bool2,bool3,bool4,bool8,bool16,char2,char3,char4,char8,char16,complex,constant,event_t,float2,float3,float4,float8,float16,global,half2,half3,half4,half8,half16,image2d_t,image3d_t,imaginary,int2,int3,int4,int8,int16,kernel,local,long2,long3,long4,long8,long16,private,quad,quad2,quad3,quad4,quad8,quad16,sampler_t,short2,short3,short4,short8,short16,uchar2,uchar3,uchar4,uchar8,uchar16,uint2,uint3,uint4,uint8,uint16,ulong2,ulong3,ulong4,ulong8,ulong16,ushort2,ushort3,ushort4,ushort8,ushort16,__constant,__global,__kernel,__local,__private
 	},
 	emphstyle=\color{dkcyan}\ttfamily,
 	morecomment=[l][\color{magenta}]{\#}
 }
 
-% -----------------------------------------------------------------------------
 % OpenSees
-% -----------------------------------------------------------------------------
 \lstdefinestyle{opensees}{
 	language=tcl,
 	breakatwhitespace=false,
@@ -401,7 +462,6 @@
 		-accel,-beamUniform,-dir,-dof,-ele,-eleRange,-file,-height,-increment,-initial,-iNode,-integration,-iterate,-jNode,-kNode,-mass,-mat,-matConcrete,-matShear,-matSteel,-max,-maxDim,-maxEta,-maxIter,-min,-minEta,-ndf,-ndm,-node,-nodeRange,-numSublevels,-numSubSteps,-perpDirn,-region,-rho,-sections,-thick,-time,-tol,-type,-width
 	},
 	emphstyle=[1]\color{black}\bfseries\em,
-	% moredelim=[s][\color{black}\bfseries\em]{-}{\ },
 	keepspaces=true,
 	morecomment=[l]{\#},
 	morekeywords={
@@ -413,18 +473,14 @@
 	ndkeywordstyle=\color{dkcyan}\ttfamily
 }
 
-% -----------------------------------------------------------------------------
 % Pascal
-% -----------------------------------------------------------------------------
 \lstdefinestyle{pascal}{
 	language=Pascal,
 	morecomment=[l]{//},
 	sensitive=false
 }
 
-% -----------------------------------------------------------------------------
 % Perl
-% -----------------------------------------------------------------------------
 \lstdefinestyle{perl}{
 	language=Perl,
 	alsoletter={\%},
@@ -432,9 +488,7 @@
 	keepspaces=true
 }
 
-% -----------------------------------------------------------------------------
 % PHP
-% -----------------------------------------------------------------------------
 \lstdefinestyle{php}{
 	language=php,
 	emph=[1]{
@@ -455,9 +509,7 @@
 	upquote=true
 }
 
-% -----------------------------------------------------------------------------
 % Texto plano
-% -----------------------------------------------------------------------------
 \lstdefinestyle{plaintext}{
 	language={},
 	keepspaces=true,
@@ -465,23 +517,46 @@
 	tabsize=4
 }
 
-% -----------------------------------------------------------------------------
 % Postscript
-% -----------------------------------------------------------------------------
 \lstdefinestyle{postscript}{
 	language=PostScript,
 	keepspaces=true
 }
 
-% -----------------------------------------------------------------------------
+% Powershell
+% https://github.com/rmainer/latex-listings-powershell/blob/master/src/latex-listings-powershell.tex
+\lstdefinestyle{powershell}{
+	alsodigit={-},
+	morecomment=[l]{\#},
+	morecomment=[n]{<\#}{\#>},
+	morekeywords={
+		Add-Content,Add-PSSnapin,Clear-Content,Clear-History,Clear-Host,Clear-Item,Clear-ItemProperty,Clear-Variable,Compare-Object,Connect-PSSession,Convert-Path,ConvertFrom-String,Copy-Item,Copy-ItemProperty,Disable-PSBreakpoint,Disconnect-PSSession,Enable-PSBreakpoint,Enter-PSSession,Exit-PSSession,Export-Alias,Export-Csv,Export-PSSession,ForEach-Object,Format-Custom,Format-Hex,Format-List,Format-Table,Format-Wide,Get-Alias,Get-ChildItem,Get-Clipboard,Get-Command,Get-ComputerInfo,Get-Content,Get-History,Get-Item,Get-ItemProperty,Get-ItemPropertyValue,Get-Job,Get-Location,Get-Member,Get-Module,Get-Process,Get-PSBreakpoint,Get-PSCallStack,Get-PSDrive,Get-PSSession,Get-PSSnapin,Get-Service,Get-TimeZone,Get-Unique,Get-Variable,Get-WmiObject,Group-Object,help,Import-Alias,Import-Csv,Import-Module,Import-PSSession,Invoke-Command,Invoke-Expression,Invoke-History,Invoke-Item,Invoke-RestMethod,Invoke-WebRequest,Invoke-WmiMethod,Measure-Object,mkdir,Move-Item,Move-ItemProperty,New-Alias,New-Item,New-Module,New-PSDrive,New-PSSession,New-PSSessionConfigurationFile,New-Variable,Out-GridView,Out-Host,Out-Printer,Pop-Location,powershell_ise.exe,Push-Location,Receive-Job,Receive-PSSession,Remove-Item,Remove-ItemProperty,Remove-Job,Remove-Module,Remove-PSBreakpoint,Remove-PSDrive,Remove-PSSession,Remove-PSSnapin,Remove-Variable,Remove-WmiObject,Rename-Item,Rename-ItemProperty,Resolve-Path,Resume-Job,Select-Object,Select-String,Set-Alias,Set-Clipboard,Set-Content,Set-Item,Set-ItemProperty,Set-Location,Set-PSBreakpoint,Set-TimeZone,Set-Variable,Set-WmiInstance,Show-Command,Sort-Object,Start-Job,Start-Process,Start-Service,Start-Sleep,Stop-Job,Stop-Process,Stop-Service,Suspend-Job,Tee-Object,Trace-Command,Wait-Job,Where-Object,Write-Output
+	},
+	morekeywords={
+		Do,Else,For,ForEach,Function,If,In,Until,While
+	},
+	morestring=[b]{"},
+	morestring=[b]{'},
+	morestring=[s]{@'}{'@},
+	morestring=[s]{@"}{"@},
+	sensitive=false
+}
+
+% Prolog
+\lstdefinestyle{prolog}{
+	language=Prolog
+}
+
+% Promela
+\lstdefinestyle{promela}{
+	language=Promela
+}
+
 % Pseudocódigo
-% -----------------------------------------------------------------------------
-\lstdefinestyle{pseudocode}{
+\lstdefinelanguage{Pseudocode}{
 	language={},
-	backgroundcolor=\color{white},
 	breakatwhitespace=false,
 	commentstyle=\color{gray}\upshape,
-	frame=tb,
 	keepspaces=true,
 	keywords={
 		and,be,begin,break,datatype,do,elif,else,end,for,foreach,fun,function,if,in,input,let,not,null,or,output,pop,procedure,push,repeat,return,swap,until,while,xor
@@ -495,10 +570,17 @@
 	sensitive=false,
 	stringstyle=\color{dkgray}\bfseries\em
 }
+\lstdefinestyle{pseudocode}{
+	language=Pseudocode,
+	backgroundcolor=\color{white},
+	frame=tb,
+	numbers=none
+}
+\lstdefinestyle{pseudocodecolor}{
+	language=Pseudocode
+}
 
-% -----------------------------------------------------------------------------
 % Python
-% -----------------------------------------------------------------------------
 \lstdefinelanguage{pythonEXTENDED}{
 	language=Python,
 	breakatwhitespace=false,
@@ -512,16 +594,25 @@
 		as,assert,close,listdir,self,sorted,split,strip,with
 	}
 }
-\lstdefinestyle{py}{
-	language=pythonEXTENDED
-}
 \lstdefinestyle{python}{
 	language=pythonEXTENDED
 }
 
-% -----------------------------------------------------------------------------
+% Q#
+\lstdefinestyle{qsharp}{
+	mathescape=true,
+	morecomment=[l]{//},
+	morecomment=[l][\color{dkgreen}]{///},
+	morekeywords={
+		Adj,Adjoint,adjoint,and,apply,as,auto,BigInt,body,Bool,borrowing,Controlled,controlled,Ctl,distribute,Double,elif,else,fail,false,fixup,for,function,if,in,Int,intrinsic,invert,is,let,mutable,namespace,new,newtype,not,One,open,operation,or,Pauli,PauliI,PauliX,PauliY,PauliZ,Qubit,Range,repeat,Result,return,self,set,String,true,Unit,until,using,while,within,Zero
+	},
+	morekeywords=[2]{
+		Assert,AssertProb,CCNOT,CNOT,Exp,ExpFrac,H,I,M,Measure,Message,R,R1,R1Frac,Random,Reset,ResetAll,RFrac,Rx,Ry,Rz,S,SWAP,T,X,Y,Z
+	},
+	sensitive=true
+}
+
 % R
-% -----------------------------------------------------------------------------
 \lstdefinestyle{r}{
 	language=R,
 	alsoletter={.<-},
@@ -537,9 +628,7 @@
 	}
 }
 
-% -----------------------------------------------------------------------------
 % Racket
-% -----------------------------------------------------------------------------
 \lstdefinestyle{racket}{
 	alsoletter={',`,-,/,>,<,\#,\%},
 	morekeywords=[1]{
@@ -559,10 +648,19 @@
 	sensitive=true
 }
 
+% Reil
+\lstdefinestyle{reil}{
+	comment=[l]{;},
+	keywords=[1]{
+		ADD,add,and,AND,BISZ,bisz,bsh,BSH,div,DIV,jcc,JCC,LDM,ldm,MOD,mod,mul,MUL,nop,NOP,or,OR,stm,STM,STR,str,sub,SUB,undef,UNDEF,unkn,UNKN,XOR,xor
+	},
+	keywords=[3]{
+		ah,AH,al,AL,AX,ax,bh,BH,BL,bl,bp,BP,bpl,BPL,BX,bx,ch,CH,cl,CL,cx,CX,DH,dh,di,DI,dil,DIL,dl,DL,DX,dx,EAX,eax,EBP,ebp,ebx,EBX,ECX,ecx,EDI,edi,edx,EDX,esi,ESI,esp,ESP,r8,R8,r8b,R8B,r8d,R8D,r8w,R8W,r9,R9,R9B,r9b,R9D,r9d,r9w,R9W,r10,R10,R10B,r10b,R10D,r10d,r10w,R10W,r11,R11,r11b,R11B,r11d,R11D,R11W,r11w,R12,r12,R12B,r12b,r12d,R12D,r12w,R12W,R13,r13,r13b,R13B,R13D,r13d,R13W,r13w,r14,R14,R14B,r14b,r14d,R14D,R14W,r14w,r15,R15,r15b,R15B,r15d,R15D,R15W,r15w,RAX,rax,rbp,RBP,rbx,RBX,RCX,rcx,RDI,rdi,rdx,RDX,RSI,rsi,RSP,rsp,SI,si,SIL,sil,SP,sp,spl,SPL
+	},
+	sensitive=true
+}
 
-% -----------------------------------------------------------------------------
 % Ruby
-% -----------------------------------------------------------------------------
 \lstdefinestyle{ruby}{
 	language=Ruby,
 	breakatwhitespace=true,
@@ -571,14 +669,7 @@
 	sensitive=true
 }
 
-% -----------------------------------------------------------------------------
 % Rust
-% [1] Reserve keywords
-% [2] Traits
-% [3] Primitive types
-% [4] Type and value constructors
-% [5] Identifier
-% -----------------------------------------------------------------------------
 \lstdefinelanguage{Rust}{
 	sensitive,
 	alsodigit={},
@@ -587,22 +678,22 @@
 	morecomment=[l]{//},
 	morecomment=[s]{/*}{*/},
 	moredelim=[s][{\itshape\color[rgb]{0,0,0.75}}]{\#[}{]},
-	morekeywords=[2]{
+	morekeywords=[2]{ % Traits
 		Add,AddAssign,Any,AsciiExt,AsInner,AsInnerMut,AsMut,AsRawFd,AsRawHandle,AsRawSocket,AsRef,Binary,BitAnd,BitAndAssign,Bitor,BitOr,BitOrAssign,BitXor,BitXorAssign,Borrow,BorrowMut,Boxed,BoxPlace,BufRead,BuildHasher,CastInto,CharExt,Clone,CoerceUnsized,CommandExt,Copy,Debug,DecodableFloat,Default,Deref,DerefMut,DirBuilderExt,DirEntryExt,Display,Div,DivAssign,DoubleEndedIterator,DoubleEndedSearcher,Drop,EnvKey,Eq,Error,ExactSizeIterator,ExitStatusExt,Extend,FileExt,FileTypeExt,Float,Fn,FnBox,FnMut,FnOnce,Freeze,From,FromInner,FromIterator,FromRawFd,FromRawHandle,FromRawSocket,FromStr,FullOps,FusedIterator,Generator,Hash,Hasher,Index,IndexMut,InPlace,Int,Into,IntoCow,IntoInner,IntoIterator,IntoRawFd,IntoRawHandle,IntoRawSocket,IsMinusOne,IsZero,Iterator,JoinHandleExt,LargeInt,LowerExp,LowerHex,MetadataExt,Mul,MulAssign,Neg,Not,Octal,OpenOptionsExt,Ord,OsStrExt,OsStringExt,Packet,PartialEq,PartialOrd,Pattern,PermissionsExt,Place,Placer,Pointer,Product,Put,RangeArgument,RawFloat,Read,Rem,RemAssign,Seek,Shl,ShlAssign,Shr,ShrAssign,Sized,SliceConcatExt,SliceExt,SliceIndex,Stats,Step,StrExt,Sub,SubAssign,Sum,Sync,TDynBenchFn,Terminal,Termination,ToOwned,ToSocketAddrs,ToString,Try,TryFrom,TryInto,UnicodeStr,Unsize,UpperExp,UpperHex,WideInt,Write
 	},
 	morekeywords=[2]{
 		Send
 	},
-	morekeywords=[3]{
+	morekeywords=[3]{ % Primitivas
 		bool,char,f32,f64,i8,i16,i32,i64,isize,str,u8,u16,u32,u64,unit,usize,i128,u128
 	},
-	morekeywords=[4]{
+	morekeywords=[4]{ % Valor y tipo de constructores
 		Err,false,None,Ok,Some,true
 	},
-	morekeywords=[5]{
+	morekeywords=[5]{ % Identificadores
 		assert!,assert_eq!,assert_ne!,cfg!,column!,compile_error!,concat!,concat_idents!,debug_assert!,debug_assert_eq!,debug_assert_ne!,env!,eprint!,eprintln!,file!,format!,format_args!,include!,include_bytes!,include_str!,line!,module_path!,option_env!,panic!,print!,println!,select!,stringify!,thread_local!,try!,unimplemented!,unreachable!,vec!,write!,writeln!
 	},
-	morekeywords={
+	morekeywords={ % Palabras reservadas
 		abstract,alignof,become,box,do,final,macro,offsetof,override,priv, proc,pure,sizeof,typeof,unsized,virtual,yield
 	},
 	morekeywords={
@@ -625,14 +716,12 @@
 \lstdefinestyle{rust}{
 	language=Rust,
 	keywordstyle=[2]\color[rgb]{0.75,0,0}, % Traits
-	keywordstyle=[3]\color[rgb]{0,0.5,0}, % Primitive types
-	keywordstyle=[4]\color[rgb]{0,0.5,0}, % Type and value constructors
+	keywordstyle=[3]\color[rgb]{0,0.5,0}, % Primitivas
+	keywordstyle=[4]\color[rgb]{0,0.5,0}, % Valor y tipo de constructores
 	keywordstyle=[5]\color[rgb]{0,0,0.75} % Macros
 }
 
-% -----------------------------------------------------------------------------
 % Scala
-% -----------------------------------------------------------------------------
 \lstdefinestyle{scala}{
 	language=scala,
 	breakatwhitespace=true,
@@ -649,9 +738,7 @@
 	}
 }
 
-% -----------------------------------------------------------------------------
 % Scheme
-% -----------------------------------------------------------------------------
 \lstdefinestyle{scheme}{
 	language=Lisp,
 	morecomment=[l]{;},
@@ -661,24 +748,33 @@
 	morestring=[b]"
 }
 
-% -----------------------------------------------------------------------------
+% Scilab
+\lstdefinestyle{scilab}{
+	language=Scilab
+}
+
+% Simula
+\lstdefinestyle{simula}{
+	language=Simula
+}
+
+% SPARQL
+\lstdefinestyle{sparql}{
+	language=SPARQL
+}
+
 % SQL
-% -----------------------------------------------------------------------------
 \lstdefinestyle{sql}{
 	language=SQL,
 	breakatwhitespace=true
 }
 
-% -----------------------------------------------------------------------------
 % Swift
-% -----------------------------------------------------------------------------
 \lstdefinestyle{swift}{
 	language=Swift
 }
 
-% -----------------------------------------------------------------------------
 % TCL
-% -----------------------------------------------------------------------------
 \lstdefinestyle{tcl}{
 	language=tcl,
 	breakatwhitespace=false,
@@ -686,24 +782,18 @@
 	morecomment=[l]{\#}
 }
 
-% -----------------------------------------------------------------------------
 % Visual Basic
-% -----------------------------------------------------------------------------
 \lstdefinestyle{vbscript}{
 	language=[Visual]Basic,
 	extendedchars=true
 }
 
-% -----------------------------------------------------------------------------
 % Verilog
-% -----------------------------------------------------------------------------
 \lstdefinestyle{verilog}{
 	language=Verilog
 }
 
-% -----------------------------------------------------------------------------
 % VDHL
-% -----------------------------------------------------------------------------
 \lstdefinelanguage{VHDL}{
 	morekeywords=[1]{
 		ALL,all,and,architecture,begin,downto,end,entity,in,is,library,Not,of,or,out,port,use
@@ -717,9 +807,7 @@
 	language=VHDL
 }
 
-% -----------------------------------------------------------------------------
 % XML
-% -----------------------------------------------------------------------------
 \lstdefinelanguage{XML}{
 	morecomment=[s]{<?}{?>},
 	morekeywords={
@@ -737,17 +825,21 @@
 % Configuración de códigos fuente
 % -----------------------------------------------------------------------------
 \lstset{
-	% \mbox{\textcolor{black}{$\hookrightarrow$}\space}
-	aboveskip=0.75em,
+	aboveskip=\sourcecodeskipabove em,
 	basicstyle={\sourcecodefonts\sourcecodefontf\color{\maintextcolor}},
-	belowskip=1em,
+	belowskip=\sourcecodeskipbelow em,
 	breaklines=true,
 	columns=fullflexible,
 	commentstyle=\color{dkgreen}\upshape,
 	extendedchars=true,
 	fontadjust=true,
-	% fancyvrb=false,
-	identifierstyle=\color{black},
+	frame=ltb,
+	framerule=0pt,
+	framexbottommargin=\sourcecodebgmarginbottom pt,
+	framexleftmargin=\sourcecodebgmarginleft pt,
+	framexrightmargin=\sourcecodebgmarginright pt,
+	framextopmargin=\sourcecodebgmargintop pt,
+	identifierstyle=\color{\maintextcolor},
 	keepspaces=true,
 	keywordstyle=\color{blue},
 	literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
@@ -795,10 +887,11 @@
 		{υ}{{$\upsilon$}}1 {ύ}{{$\dot \upsilon$}}1 {Ϋ}{{$\ddot Y$}}1
 		{ϋ}{{$\ddot \upsilon$}}1 {ΰ}{{$\dddot \upsilon$}}1
 		{Φ}{{$\Phi$}}1 {φ}{{$\phi$}}1 {Ψ}{{$\Psi$}}1 {ψ}{{$\psi$}}1
-		{Ω}{{$\Omega$}}1 {ω}{{$\omega$}}1 {ώ}{{$\dot \omega$}}1,
+		{Ω}{{$\Omega$}}1 {ω}{{$\omega$}}1 {ώ}{{$\dot \omega$}}1
+		{“}{{``}}1 {”}{{''}}1 {…}{{$\ldots$}}1 {`}{\`}1 {–}{{--}}1 { }{{ }}1,
 	numbers=left,
 	numbersep={\sourcecodenumbersep pt},
-	numberstyle=\tiny\color{dkgray},
+	numberstyle=\sourcecodenumbersize\color{dkgray},
 	postbreak=\mbox{$\hookrightarrow$\space},
 	showspaces=false,
 	showstringspaces=false,
@@ -812,36 +905,51 @@
 % Chequeo de estilos, cualquier nuevo estilo añadirlo a esta lista
 % -----------------------------------------------------------------------------
 \newcommand{\checkvalidsourcecodestyle}[1]{%
+	\ifthenelse{\equal{#1}{abap}}{}{%
+	\ifthenelse{\equal{#1}{ada}}{}{%
 	\ifthenelse{\equal{#1}{assemblerx64}}{}{%
 	\ifthenelse{\equal{#1}{assemblerx86}}{}{%
+	\ifthenelse{\equal{#1}{awk}}{}{%
 	\ifthenelse{\equal{#1}{bash}}{}{%
 	\ifthenelse{\equal{#1}{basic}}{}{%
 	\ifthenelse{\equal{#1}{c}}{}{%
+	\ifthenelse{\equal{#1}{caml}}{}{%
+	\ifthenelse{\equal{#1}{cmake}}{}{%
 	\ifthenelse{\equal{#1}{cobol}}{}{%
 	\ifthenelse{\equal{#1}{cpp}}{}{%
 	\ifthenelse{\equal{#1}{csharp}}{}{%
 	\ifthenelse{\equal{#1}{css}}{}{%
 	\ifthenelse{\equal{#1}{csv}}{}{%
 	\ifthenelse{\equal{#1}{cuda}}{}{%
+	\ifthenelse{\equal{#1}{dart}}{}{%
 	\ifthenelse{\equal{#1}{docker}}{}{%
+	\ifthenelse{\equal{#1}{elisp}}{}{%
+	\ifthenelse{\equal{#1}{elixir}}{}{%
+	\ifthenelse{\equal{#1}{erlang}}{}{%
 	\ifthenelse{\equal{#1}{fortran}}{}{%
+	\ifthenelse{\equal{#1}{fsharp}}{}{%
 	\ifthenelse{\equal{#1}{glsl}}{}{%
 	\ifthenelse{\equal{#1}{gnuplot}}{}{%
 	\ifthenelse{\equal{#1}{go}}{}{%
 	\ifthenelse{\equal{#1}{haskell}}{}{%
-	\ifthenelse{\equal{#1}{html5}}{}{%
+	\ifthenelse{\equal{#1}{html}}{}{%
 	\ifthenelse{\equal{#1}{ini}}{}{%
 	\ifthenelse{\equal{#1}{java}}{}{%
 	\ifthenelse{\equal{#1}{javascript}}{}{%
-	\ifthenelse{\equal{#1}{js}}{}{%
 	\ifthenelse{\equal{#1}{json}}{}{%
+	\ifthenelse{\equal{#1}{julia}}{}{%
 	\ifthenelse{\equal{#1}{kotlin}}{}{%
 	\ifthenelse{\equal{#1}{latex}}{}{%
 	\ifthenelse{\equal{#1}{lisp}}{}{%
+	\ifthenelse{\equal{#1}{llvm}}{}{%
 	\ifthenelse{\equal{#1}{lua}}{}{%
+	\ifthenelse{\equal{#1}{make}}{}{%
 	\ifthenelse{\equal{#1}{maple}}{}{%
 	\ifthenelse{\equal{#1}{mathematica}}{}{%
 	\ifthenelse{\equal{#1}{matlab}}{}{%
+	\ifthenelse{\equal{#1}{mercury}}{}{%
+	\ifthenelse{\equal{#1}{modula2}}{}{%
+	\ifthenelse{\equal{#1}{objectivec}}{}{%
 	\ifthenelse{\equal{#1}{octave}}{}{%
 	\ifthenelse{\equal{#1}{opencl}}{}{%
 	\ifthenelse{\equal{#1}{opensees}}{}{%
@@ -850,15 +958,23 @@
 	\ifthenelse{\equal{#1}{php}}{}{%
 	\ifthenelse{\equal{#1}{plaintext}}{}{%
 	\ifthenelse{\equal{#1}{postscript}}{}{%
+	\ifthenelse{\equal{#1}{powershell}}{}{%
+	\ifthenelse{\equal{#1}{prolog}}{}{%
+	\ifthenelse{\equal{#1}{promela}}{}{%
 	\ifthenelse{\equal{#1}{pseudocode}}{}{%
-	\ifthenelse{\equal{#1}{py}}{}{%
+	\ifthenelse{\equal{#1}{pseudocodecolor}}{}{%
 	\ifthenelse{\equal{#1}{python}}{}{%
+	\ifthenelse{\equal{#1}{qsharp}}{}{%
 	\ifthenelse{\equal{#1}{r}}{}{%
 	\ifthenelse{\equal{#1}{racket}}{}{%
+	\ifthenelse{\equal{#1}{reil}}{}{%
 	\ifthenelse{\equal{#1}{ruby}}{}{%
 	\ifthenelse{\equal{#1}{rust}}{}{%
 	\ifthenelse{\equal{#1}{scala}}{}{%
 	\ifthenelse{\equal{#1}{scheme}}{}{%
+	\ifthenelse{\equal{#1}{scilab}}{}{%
+	\ifthenelse{\equal{#1}{simula}}{}{%
+	\ifthenelse{\equal{#1}{sparql}}{}{%
 	\ifthenelse{\equal{#1}{sql}}{}{%
 	\ifthenelse{\equal{#1}{swift}}{}{%
 	\ifthenelse{\equal{#1}{tcl}}{}{%
@@ -866,28 +982,52 @@
 	\ifthenelse{\equal{#1}{verilog}}{}{%
 	\ifthenelse{\equal{#1}{vhdl}}{}{%
 	\ifthenelse{\equal{#1}{xml}}{}{%
-		\errmessage{LaTeX Warning: Estilo de codigo desconocido. Valores esperados: assemblerx64,assemblerx86,bash,basic,c,cobol,cpp,csharp,css,csv,cuda,docker,fortran,glsl,gnuplot,go,haskell,html5,ini,java,javascript,js,json,kotlin,latex,lisp,lua,maple,mathematica,matlab,octave,opencl,opensees,pascal,perl,php,plaintext,postscript,pseudocode,py,python,r,racket,ruby,rust,scala,scheme,sql,swift,tcl,vbscript,verilog,vhdl,xml}%
+		\errmessage{LaTeX Warning: Estilo de codigo desconocido. Valores esperados: abap,ada,assemblerx64,assemblerx86,awk,bash,basic,c,caml,cmake,cobol,cpp,csharp,css,csv,cuda,dart,docker,elisp,elixir,erlang,fortran,fsharp,glsl,gnuplot,go,haskell,html,ini,java,javascript,json,julia,kotlin,latex,lisp,llvm,lua,make,maple,mathematica,matlab,mercury,modula2,objectivec,octave,opencl,opensees,pascal,perl,php,plaintext,postscript,powershell,prolog,promela,pseudocode,pseudocodecolor,python,qsharp,r,racket,reil,ruby,rust,scala,scheme,scilab,simula,sparql,sql,swift,tcl,vbscript,verilog,vhdl,xml}%
 		\stop%
-	}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}%
+	}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}%
 }
 
 % Crea un entorno de código inline
 %	#1	Estilo de código
-\newcommand{\inlinesourcecode}[1]{%
-	\checkvalidsourcecodestyle{#1}%
-	\lstinline[style=#1]%
+%	#2	Código a insertar
+\newcommand{\inlinesourcecode}[2]{%
+	\inlinesourcecodeboxed[NOCOLOR]{#1}{#2}%
+}
+
+% Crea un entorno de código inline dentro de un recuadro de color
+%	#1	Color del recuadro
+%	#2	Estilo de código
+%	#3	Código a insertar
+\newcommand{\inlinesourcecodeboxed}[3][]{%
+	\emptyvarerr{\inlinesourcecodeboxed}{#2}{Estilo de codigo no definido}%
+	\emptyvarerr{\inlinesourcecodeboxed}{#3}{Codigo no definido}%
+	\lstset{%
+		basicstyle={\sourcecodeilfonts\sourcecodeilfontf\color{\maintextcolor}}%
+	}%
+	\checkvalidsourcecodestyle{#2}%
+	\ifthenelse{\equal{#1}{}}{%
+		\Colorbox{\sourcecodebgcolor}{\lstinline[style=#2]!#3!}%
+	}{%
+	\ifthenelse{\equal{#1}{NOCOLOR}}{%
+		\lstinline[style=#2]!#3!%
+	}{%
+		\Colorbox{#1}{\lstinline[style=#2]!#3!}%
+	}}%
+	\lstset{%
+		basicstyle={\sourcecodefonts\sourcecodefontf\color{\maintextcolor}}%
+	}%
 }
 
 % Inserta una referencia en un código fuente
 % 	#1	Referencia
 \newcommand{\coderef}[1]{%
-	\ensuremath{\text{\ref{#1}}}
+	\ensuremath{\text{\ref{#1}}}%
 }
 
 % Inserta una referencia en un código fuente
 % 	#1	Referencia
 \newcommand{\codeeqref}[1]{%
-	\ensuremath{\text{(\ref{#1})}}
+	\ensuremath{\text{(\ref{#1})}}%
 }
 
 % END

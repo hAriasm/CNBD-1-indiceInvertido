@@ -4,8 +4,6 @@
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
-%        Facultad de Ciencias Físicas y Matemáticas
-%        Universidad de Chile
 %        pablo@ppizarror.com
 %
 % Manual template: [https://latex.ppizarror.com/informe]
@@ -14,7 +12,7 @@
 \newcommand{\templateFinalcfg}{
 	
 	% -------------------------------------------------------------------------
-	% Se reestablecen headers y footers
+	% Se restablecen headers y footers
 	% -------------------------------------------------------------------------
 	\markboth{}{}
 	\clearpage
@@ -143,20 +141,11 @@
 		}}}}}}}}}}}}}}}}}}}
 	}{
 	}
-
-	% -------------------------------------------------------------------------
-	% Estilo de títulos - reestablece estilos por el índice
-	% -------------------------------------------------------------------------
-	\sectionfont{\color{\titlecolor} \fontsizetitle \styletitle \selectfont}
-	\subsectionfont{\color{\subtitlecolor} \fontsizesubtitle \stylesubtitle \selectfont}
-	\subsubsectionfont{\color{\subsubtitlecolor} \fontsizesubsubtitle \stylesubsubtitle \selectfont}
-	\titleformat{\subsubsubsection}{\color{\ssstitlecolor} \normalfont \fontsizessstitle \stylessstitle}{\thesubsubsubsection}{1em}{}
-	\titlespacing*{\subsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-
+	
 	% -------------------------------------------------------------------------
 	% Crea funciones para numerar objetos
 	% -------------------------------------------------------------------------
-	% Numeración de la sección en los objetos CÓDIGO FUENTE
+	% Numeración de la sección en los objetos código fuente
 	\ifthenelse{\equal{\showsectioncaptioncode}{none}}{
 		\def\sectionobjectnumcode {}
 	}{
@@ -170,19 +159,15 @@
 		\def\sectionobjectnumcode {\thesubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptioncode}{ssssec}}{
-		\ifthenelse{\equal{\showdotaftersnum}{true}}{
-			\def\sectionobjectnumcode {\thesubsubsubsection}
-		}{
-			\def\sectionobjectnumcode {\thesubsubsubsection\sectioncaptiondelimiter}
-		}
+		\def\sectionobjectnumcode {\thesubsubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptioncode}{chap}}{
 		\def\sectionobjectnumcode {\thechapter\sectioncaptiondelimiter}
 	}{
 		\throwbadconfig{Valor configuracion incorrecto}{\showsectioncaptioncode}{none,chap,sec,ssec,sssec,ssssec}}}}}}
 	}
-
-	% Numeración de la sección en los objetos ECUACIONES
+	
+	% Numeración de la sección en los objetos ecuaciones
 	\ifthenelse{\equal{\showsectioncaptioneqn}{none}}{
 		\def\sectionobjectnumeqn {}
 	}{
@@ -196,19 +181,15 @@
 		\def\sectionobjectnumeqn {\thesubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptioneqn}{ssssec}}{
-		\ifthenelse{\equal{\showdotaftersnum}{true}}{
-			\def\sectionobjectnumeqn {\thesubsubsubsection}
-		}{
-			\def\sectionobjectnumeqn {\thesubsubsubsection\sectioncaptiondelimiter}
-		}
+		\def\sectionobjectnumeqn {\thesubsubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptioneqn}{chap}}{
 		\def\sectionobjectnumeqn {\thechapter\sectioncaptiondelimiter}
 	}{
 		\throwbadconfig{Valor configuracion incorrecto}{\showsectioncaptioneqn}{none,chap,sec,ssec,sssec,ssssec}}}}}}
 	}
-
-	% Numeración de la sección en los objetos FIGURAS
+	
+	% Numeración de la sección en los objetos figuras
 	\ifthenelse{\equal{\showsectioncaptionfig}{none}}{
 		\def\sectionobjectnumfig {}
 	}{
@@ -222,19 +203,15 @@
 		\def\sectionobjectnumfig {\thesubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptionfig}{ssssec}}{
-		\ifthenelse{\equal{\showdotaftersnum}{true}}{
-			\def\sectionobjectnumfig {\thesubsubsubsection}
-		}{
-			\def\sectionobjectnumfig {\thesubsubsubsection\sectioncaptiondelimiter}
-		}
+		\def\sectionobjectnumfig {\thesubsubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptionfig}{chap}}{
 		\def\sectionobjectnumfig {\thechapter\sectioncaptiondelimiter}
 	}{
 		\throwbadconfig{Valor configuracion incorrecto}{\showsectioncaptionfig}{none,chap,sec,ssec,sssec,ssssec}}}}}}
 	}
-
-	% Numeración de la sección en los objetos TABLAS
+	
+	% Numeración de la sección en los objetos tablas
 	\ifthenelse{\equal{\showsectioncaptiontab}{none}}{
 		\def\sectionobjectnumtab {}
 	}{
@@ -248,22 +225,18 @@
 		\def\sectionobjectnumtab {\thesubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptiontab}{ssssec}}{
-		\ifthenelse{\equal{\showdotaftersnum}{true}}{
-			\def\sectionobjectnumtab {\thesubsubsubsection}
-		}{
-			\def\sectionobjectnumtab {\thesubsubsubsection\sectioncaptiondelimiter}
-		}
+		\def\sectionobjectnumtab {\thesubsubsubsection\sectioncaptiondelimiter}
 	}{
 	\ifthenelse{\equal{\showsectioncaptiontab}{chap}}{
 		\def\sectionobjectnumtab {\thechapter\sectioncaptiondelimiter}
 	}{
 		\throwbadconfig{Valor configuracion incorrecto}{\showsectioncaptiontab}{none,chap,sec,ssec,sssec,ssssec}}}}}}
 	}
-
+	
 	% -------------------------------------------------------------------------
 	% Modifica numeración de objetos
 	% -------------------------------------------------------------------------
-	% Código fuente, INCLUIR SECCIÓN
+	% Código fuente, incluir sección
 	\ifthenelse{\equal{\captionnumcode}{arabic}}{
 		\renewcommand{\thelstlisting}{\sectionobjectnumcode\arabic{lstlisting}}
 	}{
@@ -281,8 +254,8 @@
 	}{
 		\throwbadconfig{Tipo numero codigo fuente desconocido}{\captionnumcode}{arabic,alph,Alph,roman,Roman}}}}}
 	}
-
-	% Ecuaciones, INCLUIR SECCIÓN
+	
+	% Ecuaciones, incluir sección
 	\ifthenelse{\equal{\captionnumequation}{arabic}}{
 		\renewcommand{\theequation}{\sectionobjectnumeqn\arabic{equation}}
 	}{
@@ -300,8 +273,8 @@
 	}{
 		\throwbadconfig{Tipo numero ecuacion desconocido}{\captionnumequation}{arabic,alph,Alph,roman,Roman}}}}}
 	}
-
-	% Figuras, INCLUIR SECCIÓN
+	
+	% Figuras, incluir sección
 	\ifthenelse{\equal{\captionnumfigure}{arabic}}{
 		\renewcommand{\thefigure}{\sectionobjectnumfig\arabic{figure}}
 	}{
@@ -319,8 +292,8 @@
 	}{
 		\throwbadconfig{Tipo numero figura desconocido}{\captionnumfigure}{arabic,alph,Alph,roman,Roman}}}}}
 	}
-
-	% Subfiguras, NO USAR SECCIONES YA QUE SON HIJAS DE FIGURA
+	
+	% Subfiguras, no usar secciones ya que son hijas de figura
 	\ifthenelse{\equal{\captionnumsubfigure}{arabic}}{
 		\renewcommand{\thesubfigure}{\arabic{subfigure}}
 	}{
@@ -338,8 +311,8 @@
 	}{
 		\throwbadconfig{Tipo numero subfigura desconocido}{\captionnumsubfigure}{arabic,alph,Alph,roman,Roman}}}}}
 	}
-
-	% Tablas, INCLUIR SECCIÓN
+	
+	% Tablas, incluir sección
 	\ifthenelse{\equal{\captionnumtable}{arabic}}{
 		\renewcommand{\thetable}{\sectionobjectnumtab\arabic{table}}
 	}{
@@ -357,8 +330,8 @@
 	}{
 		\throwbadconfig{Tipo numero tabla desconocido}{\captionnumtable}{arabic,alph,Alph,roman,Roman}}}}}
 	}
-
-	% Subtablas, NO INCLUIR SECCIÓN YA QUE SON HIJAS DE LAS TABLAS
+	
+	% Subtablas, no incluir sección ya que son hijas de las tablas
 	\ifthenelse{\equal{\captionnumsubtable}{arabic}}{
 		\renewcommand{\thesubtable}{\arabic{subtable}}
 	}{
@@ -376,15 +349,28 @@
 	}{
 		\throwbadconfig{Tipo numero subtabla desconocido}{\captionnumsubtable}{arabic,alph,Alph,roman,Roman}}}}}
 	}
-
+	
 	% -------------------------------------------------------------------------
-	% Se reestablecen números de página y secciones
+	% Agrega páginas dependiendo del formato
 	% -------------------------------------------------------------------------
-	% Se usa número de páginas en arábigo si es que se tenía activado los númeos romanos
+	\ifthenelse{\equal{\GLOBALtwoside}{true}}{%
+		\coretriggeronpage{\emptypagespredocformat}{}}{
+	}
+	
+	% -------------------------------------------------------------------------
+	% Reestablece \cleardoublepage
+	% -------------------------------------------------------------------------
+	% \let\cleardoublepage\oldcleardoublepage
+	\let\cleardoublepage\corecleardoublepage
+	
+	% -------------------------------------------------------------------------
+	% Se restablecen números de página y secciones
+	% -------------------------------------------------------------------------
+	% Se usa número de páginas en arábigo si es que se tenía activado los números romanos
 	\ifthenelse{\equal{\predocpageromannumber}{true}}{
 		\renewcommand{\thepage}{\arabic{page}}}{
 	}
-
+	
 	% Reinicia número de página
 	\ifthenelse{\equal{\predocresetpagenumber}{true}}{
 		\setcounter{page}{1}}{
@@ -392,19 +378,29 @@
 	
 	\setcounter{section}{0}
 	\setcounter{footnote}{0}
-
+	
 	% -------------------------------------------------------------------------
 	% Muestra los números de línea
 	% -------------------------------------------------------------------------
 	\ifthenelse{\equal{\showlinenumbers}{true}}{
 		\linenumbers}{
 	}
-
+	
 	% -------------------------------------------------------------------------
-	% Establece el estilo de las subsubsubsecciones
+	% Establece el estilo de las sub-sub-sub-secciones
 	% -------------------------------------------------------------------------
 	\titleclass{\subsubsubsection}{straight}[\subsection]
-
+	
+	% -------------------------------------------------------------------------
+	% Reestablece los valores del estado de los títulos
+	% -------------------------------------------------------------------------
+	\global\def\GLOBALtitlerequirechapter {false}
+	\global\def\GLOBALtitleinitchapter {false}
+	\global\def\GLOBALtitleinitsection {false}
+	\global\def\GLOBALtitleinitsubsection {false}
+	\global\def\GLOBALtitleinitsubsubsection {false}
+	\global\def\GLOBALtitleinitsubsubsubsection {false}
+	
 }
 
 % END

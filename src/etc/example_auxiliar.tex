@@ -1,26 +1,26 @@
-% Template:     Template Auxiliares LaTeX
+% Template:     Auxiliares LaTeX
 % Documento:    Archivo de ejemplo
 % Versión:      DEV
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
-%        Facultad de Ciencias Físicas y Matemáticas.
-%        Universidad de Chile.
 %        pablo@ppizarror.com
 %
-% Sitio web:    [https://latex.ppizarror.com/auxiliares]
-% Licencia MIT: [https://opensource.org/licenses/MIT]
+% Manual template: [https://latex.ppizarror.com/auxiliares]
+% Licencia MIT:    [https://opensource.org/licenses/MIT]
 
 % Pregunta en forma de título
 \newquestion{Pregunta 1}
 
 	% Párrafo
-	\lipsum[3-4]
-	
+	\lipsum[3] \\
+
+	\lipsum[4]
+
 	\insertimage[\label{img:testimage}]{ejemplos/test-image.png}{scale=0.17}{Ubi sunt vobis? autem \quotes{Internet}}
-	
-	\newp Aequatio videbitur\footnote{ $Q_e = max\big(1 \dots n\big)$} infra:
-	
+
+	Aequatio videbitur\footnote{ $Q_e = max\big(1 \dots n\big)$} infra:
+
 	% Ecuación
 	\insertequation[\label{eqn:eqn-larga}]{\lpow{\Lambda}{f} = \frac{L\cdot f}{W} \cdot \frac{\pow{\lpow{Q}{e}}{2}}{8 \pow{\pi}{2} \pow{W}{4} g}+ \sum_{i=1}^{l} \frac{f \cdot \big( M - d\big)}{l \cdot W} \cdot \frac{\pow{\big(\lpow{Q}{e}- i\cdot Q\big)}{2}}{8 \pow{\pi}{2} \pow{W}{4} g}}
 
@@ -35,7 +35,7 @@
 	\end{enumerate}
 
 % Pregunta encerrada en un recuadro más control
-\newboxquestion{P3} (\textbf{P1 Control 2 2017/1}) \lipsum[117] \newp 
+\newboxquestion{P3} (\textbf{P1 Control 2 2017/1}) \lipsum[117]
 
 \begin{sourcecode}{python}{}
 import numpy as np

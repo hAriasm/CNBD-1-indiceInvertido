@@ -1,20 +1,18 @@
 	% Inicio índice, desactiva espacio entre objetos
+	% -------------------------------------------------------------------------
 	\ifthenelse{\equal{\objectchaptermargin}{false}}{
 		\let\origaddvspace\addvspace
 		\renewcommand{\addvspace}[1]{}
 	}{}
-
+	
 	% Configuración del punto en índice
 	% -------------------------------------------------------------------------
-	\ifthenelse{\equal{\showdotaftersnum}{true}}{
-		\def\cftchapaftersnum {.}		
-		\def\cftsecaftersnum {.}
-		\def\cftsubsecaftersnum {.}
-		\def\cftsubsubsecaftersnum {.}
-		\def\cftsubsubsubsecaftersnum {.}
-		}{
-	}{}
-
+	\def\cftchapaftersnum {\charaftersectionnum}
+	\def\cftsecaftersnum {\charaftersectionnum}
+	\def\cftsubsecaftersnum {\charaftersectionnum}
+	\def\cftsubsubsecaftersnum {\charaftersectionnum}
+	\def\cftsubsubsubsecaftersnum {\charaftersectionnum}
+	
 	% Cambia tabulación índice de objetos para alinear con contenidos
 	% -------------------------------------------------------------------------
 	\ifthenelse{\equal{\objectindexindent}{true}}{
@@ -28,8 +26,8 @@
 		\setlength{\cftsubfigindent}{0em}
 		\def\cftlstlistingindent {0em}
 	}
-
-	% Final del índice, reestablece el espacio
+	
+	% Final del índice, restablece el espacio
 	% -------------------------------------------------------------------------
 	\ifthenelse{\equal{\objectchaptermargin}{false}}{
 		\renewcommand{\addvspace}[1]{\origaddvspace{##1}}
